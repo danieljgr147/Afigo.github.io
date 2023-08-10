@@ -6,7 +6,7 @@ export function FormularioU(){
     return (
         <section class="flex flex-col w-full justify-center items-center">
             <div class="self-start ml-20 mt-10">
-                <button onClick={() => navigate('/Inicio')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy"/></button>
+                <button onClick={() => navigate('/Usuarios')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy"/></button>
             </div>
             <div class="pt-8 ">
                 <h1 class="text-4xl font-bold text-royal">Nuevo Usuario</h1>

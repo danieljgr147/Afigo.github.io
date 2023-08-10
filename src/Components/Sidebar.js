@@ -10,7 +10,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 
 export function Sidebar(){
   const menus = [
-    { name: "Pedidos", link: "/Inicio", icon: AiOutlineShoppingCart },
+    { name: "Pedidos", link: "/", icon: AiOutlineShoppingCart },
     { name: "Cotizaciones", link: "/Cotizacion", icon: AiOutlineForm },
     { name: "Usuarios", link: "/Usuarios", icon: AiOutlineUser },
   ];
