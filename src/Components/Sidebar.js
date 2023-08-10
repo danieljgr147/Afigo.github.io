@@ -14,7 +14,7 @@ export function Sidebar(){
     { name: "Cotizaciones", link: "/Cotizacion", icon: AiOutlineForm },
     { name: "Usuarios", link: "/Usuarios", icon: AiOutlineUser },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <section className="flex gap-6">
       <div
