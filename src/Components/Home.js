@@ -16,48 +16,48 @@ export function Home() {
                         <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/Ventas')} >Nuevo Pedido</button>
                     </div>
 
-                    <div class="flex content-center items-center overflow-x-auto overflow-y-auto">
+                    <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
 
-                        <table class="table-auto border-collapse border border-grotto self-center ml-10">
+                        <table class="table-auto border-collapse border border-grotto self-center w-full">
 
                             <thead >
-                                <tr class="border border-royal bg-grotto">
-                                    <th class="p-2 border border-mid">Vendendor</th>
-                                    <th class="p-2 border border-mid">Cliente</th> 
-                                    <th class="p-2 border border-mid">Factura</th>
-                                    <th class="p-2 border border-mid">Producto</th>
-                                    <th class="p-2 border border-mid">Cantidad</th>
-                                    <th class="p-2 border border-mid">Envio</th>
-                                    <th class="p-2 border border-mid">Direccion</th>
+                                <tr class="border-none bg-royal text-white">
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Vendendor</th>
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Cliente</th> 
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Factura</th>
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Producto</th>
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Cantidad</th>
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Envio</th>
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Direccion</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="even:bg-grotto odd:bg-baby">
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
+                            <tr class="even:bg-grotto odd:bg-baby">
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
                                 </tr>
                                 <tr class="even:bg-grotto odd:bg-baby">
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th  class="p-2 border border-mid"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
                                 </tr>
                                 <tr class="even:bg-grotto odd:bg-baby">
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
                                 </tr>
                             </tbody>
 

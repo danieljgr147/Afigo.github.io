@@ -15,32 +15,32 @@ export function Usuarios() {
                     <div class="m-5 p-5 ">
                         <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/formularioUsuario')}>Nuevo Usuario</button>
                     </div>
-                    <div class="flex content-center items-center overflow-x-auto overflow-y-auto">
+                    <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
 
-                        <table class="table-auto border-collapse border border-grotto self-center ml-10">
+                        <table class="table-auto border-collapse border border-grotto self-center w-full">
 
                             <thead >
-                                <tr class="border border-royal bg-grotto">
-                                    <th class="p-2 border border-mid">Nombre</th>
-                                    <th class="p-2 border border-mid">Direccion</th> 
-                                    <th class="p-2 border border-mid">Usuario</th>
+                                <tr class="border-none bg-royal text-white">
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Nombre</th>
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Direccion</th> 
+                                    <th class="p-2 py-4 border border-mid tracking-wider">Usuario</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="even:bg-grotto odd:bg-baby">
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
                                 </tr>
                                 <tr class="even:bg-grotto odd:bg-baby">
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
                                 </tr>
                                 <tr class="even:bg-grotto odd:bg-baby">
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
-                                    <th class="p-2 border border-mid"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
+                                    <th class="p-2 py-4 border-b border-mid tracking-wider"> </th>
                                 </tr>
                             </tbody>
 

@@ -6,7 +6,7 @@ import { useRef } from "react";
 export function Nav(){
 
 	return (
-		<header class="bg-navy w-full">
+		<header class="bg-navy w-auto">
 			<div class="bg-light rounded-full grid-row grid-rows-2"><img src="afigoL.png" class="w-20 pt-2"/></div>
 			<div className="w-50 grid">
 				<ul className="flex flex-row justify-end">
