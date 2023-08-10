@@ -13,6 +13,7 @@ function App() {
   return (
     <>
     <Nav/>
+    <home/>
       <Routes>
         <Route path="/Inicio" element={<Home></Home>}></Route>
         <Route path="/Sesion" element={<Login/>}></Route>
