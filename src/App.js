@@ -12,11 +12,9 @@ import { Usuarios } from "./Components/Usuarios";
 function App() {
   return (
     <>
-    <Nav/>
-    <home/>
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/Sesion" element={<Login/>}></Route>
+        <Route path="/" element={<Login></Login>}></Route>
+        <Route path="/Inicio" element={<Home/>}></Route>
         <Route path="/Ventas" element={<FormularioV/>}></Route>
         <Route path="/Cotizacion" element={<Cotizacion/>}></Route>
         <Route path="/Usuarios" element={<Usuarios/>}></Route>

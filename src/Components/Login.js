@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router';
 import {Auth} from '../API/service'
 import { Form } from 'reactstrap';
 import Swal from 'sweetalert2';
@@ -11,7 +12,7 @@ export function Login() {
         const userValue = event.target.user.value;
         const userPassword = event.target.password.value;
         Auth(userValue,userPassword).then(
-            function(res) { if(res == "Auntenticado")window.location.href= "/" ; else Swal.fire('Error en la autenticación', 'Usuario o contraseña incorrecto' , 'error'); }
+            function(res) { if(res == "Auntenticado")window.location.href= "/Inicio" ; else Swal.fire('Error en la autenticación', 'Usuario o contraseña incorrecto' , 'error'); }
         )
     }
     

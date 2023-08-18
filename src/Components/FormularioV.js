@@ -1,12 +1,13 @@
 import { IoChevronBackCircleSharp} from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { Nav } from "reactstrap";
 
 export function FormularioV() {
     const navigate=useNavigate()
     return (
-        <section class="flex flex-col w-full justify-center items-center">
+        <><Nav /><section class="flex flex-col w-full justify-center items-center">
             <div class="self-start ml-20 mt-10">
-                <button onClick={() => navigate('/')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy"/></button>
+                <button onClick={() => navigate('/')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
             </div>
             <div class="pt-8 ">
                 <h1 class="text-4xl font-bold text-royal">Formulario de ventas</h1>
@@ -25,7 +26,7 @@ export function FormularioV() {
                 <div class="flex flex-col m-4 w-full justify-center items-center">
                     <label class="font-semibold">Tipo de factura</label>
                     <select class="border border-navy w-1/2">
-                        <option >Factura electronica</option>
+                        <option>Factura electronica</option>
                         <option>Factura fisica</option>
                     </select>
                 </div>
@@ -91,6 +92,6 @@ export function FormularioV() {
                 <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
 
             </div>
-        </section>
+        </section></>
     )
 }

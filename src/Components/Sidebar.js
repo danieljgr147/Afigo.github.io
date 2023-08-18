@@ -10,11 +10,11 @@ import { HiMenuAlt3 } from "react-icons/hi";
 
 export function Sidebar(){
   const menus = [
-    { name: "Pedidos", link: "/", icon: AiOutlineShoppingCart },
+    { name: "Pedidos", link: "/Inicio", icon: AiOutlineShoppingCart },
     { name: "Cotizaciones", link: "/Cotizacion", icon: AiOutlineForm },
     { name: "Usuarios", link: "/Usuarios", icon: AiOutlineUser },
   ];
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <section className="flex gap-6">
       <div

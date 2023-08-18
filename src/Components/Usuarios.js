@@ -27,8 +27,7 @@ export function Usuarios() {
     }, []);
 
     return (
-
-        <section class="flex flex-row w-full">
+        <><Nav /><section class="flex flex-row w-full">
             <div>
                 <Sidebar class="w-3/12" />
             </div>
@@ -40,7 +39,7 @@ export function Usuarios() {
 
                     <table class="table-auto border-collapse border border-grotto self-center w-full">
 
-                        <thead >
+                        <thead>
                             <tr class="border-none bg-royal text-white">
                                 <th class="p-2 py-4 border border-mid tracking-wider">Nombre</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Direccion</th>
@@ -63,7 +62,7 @@ export function Usuarios() {
                     </table>
                 </div>
             </section>
-        </section>
+        </section></>
 
 
     )
