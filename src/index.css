@@ -110,3 +110,7 @@ header .responsive_nav {
 		font-size: 1.5rem;
 	}
 }
+
+.table {
+	width: 100%;
+}
