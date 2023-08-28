@@ -11,7 +11,7 @@ export function Usuarios() {
                 <div>
                     <Sidebar class="w-3/12"/>
                 </div>
-                <section class="alex flex-col w-9/12">
+                <section class="alex flex-col w-9/12 ml-auto sm:ml-14 ">
                     <div class="m-5 p-5 ">
                         <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/formularioUsuario')}>Nuevo Usuario</button>
                     </div>
