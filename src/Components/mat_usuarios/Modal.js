@@ -43,9 +43,10 @@ function ModalForm(props) {
     title = "Agregar Usuario";
   }
 
-  return (
+  return  ( 
     <div>
       {button}
+
       <Modal
         isOpen={modal}
         toggle={toggle}
@@ -66,7 +67,7 @@ function ModalForm(props) {
         </ModalBody>
       </Modal>
     </div>
-  );
+  )  ;
 }
 
 export default ModalForm;

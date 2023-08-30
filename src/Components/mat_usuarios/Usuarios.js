@@ -43,8 +43,8 @@ export function Usuarios() {
                 <Sidebar class="w-3/12" />
             </div>
             <section class="alex flex-col w-9/12 ml-14">
-                <div class="m-5 p-5 ">
-                    <ModalForm class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" buttonLabel="Nuevo Usuario" addItemToState={refrescarInformacion} />
+                <div class="m-5 p-5 "> 
+                    <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/NuevoUsuario')}>Nuevo Usuario</button>
                 </div>
                 <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
                     <Tabla
@@ -58,3 +58,5 @@ export function Usuarios() {
 
     )
 }
+
+/*cambios pasados  <ModalForm class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" buttonLabel="Nuevo Usuario" addItemToState={refrescarInformacion} />*/

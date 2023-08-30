@@ -6,6 +6,7 @@ import { Nav } from "./Components/Nav";
 import { Cotizacion } from "./Components/Cotizacion";
 import { FormularioC } from "./Components/FormulacioC";
 import { Usuarios } from "./Components/mat_usuarios/Usuarios";
+import { FormularioU } from "./Components/mat_usuarios/FormularioU";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/Ventas" element={<FormularioV/>}></Route>
         <Route path="/Cotizacion" element={<Cotizacion/>}></Route>
         <Route path="/formularioCotizacion" element={<FormularioC/>}></Route>
+        <Route path="/NuevoUsuario" element={<FormularioU/>}></Route>
       </Routes>    
     </>
   );

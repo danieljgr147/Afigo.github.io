@@ -12,7 +12,7 @@ function AddEditForm(props) {
         nombre_de_usuario: "",
         contrasenia: ""
     });
-
+ 
     const onChange = (e) => {
         setUsuario({
             ...usuario,
