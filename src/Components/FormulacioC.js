@@ -9,7 +9,7 @@ export function FormularioC() {
             <div class="self-start ml-20 mt-10">
                 <button onClick={() => navigate('/Cotizacion')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
             </div>
-            <div class="pt-8 ">
+            <div class="pt-8 flex justify-center text-center">
                 <h1 class="text-4xl font-bold text-royal">Formulario de cotizaciones</h1>
             </div>
             <div class="flex flex-col w-1/2 justify-center items-center pt-20">

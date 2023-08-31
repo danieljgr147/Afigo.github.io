@@ -17,14 +17,15 @@ function Tabla_usuarios(props) {
 
     const closeDiv = (itemId) => {
         setShowDivMap(prevState => ({
-          ...prevState,
-          [itemId]: false
+            ...prevState,
+            [itemId]: false
         }));
-      };
+    };
 
+    //array con info
     const items = props.usuario.map(item => {
         const itemId = item.user_id;
-        
+
         return (
             <>
                 <tr class="even:bg-grotto odd:bg-baby" key={item.user_id}>
@@ -40,30 +41,43 @@ function Tabla_usuarios(props) {
                     </td>
                 </tr>
                 <div class="w-full h-full flex flex-row">
-                    {showDivMap[itemId] && <> <FaX class="absolute  w-7 h-auto z-40" onClick={() => closeDiv(itemId)} /> <EditarU buttonLabel="Editar" item={item} updateState={props.updateState}></EditarU></>}
+                    {showDivMap[itemId] && <>  <EditarU buttonLabel="Editar" item={item} updateState={props.updateState}></EditarU> </>}
                 </div>
             </>
         )
     })
 
+
     return (
         <>
-            <Table class="table table-auto border-collapse border border-grotto self-center w-full">
+            <section class="grid">
+                {Object.keys(showDivMap).map(itemId => (
+                    showDivMap[itemId] && (
+                        <div key={`close-${itemId}`} class="w-full flex flex-col">
+                            <button class="z-[1000] w-1/5 translate-y-[-4.5rem] self-end flex fixed  justify-end" onClick={() => closeDiv(itemId)}> <FaX class="h-auto w-[1.3rem] drop-shadow-2xl fill-white sm:w-[2rem]" /> </button>
+                        </div>
+                    )
+                ))}
+                <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
+                    <Table class="table table-auto border-collapse border border-grotto self-center w-full">
 
-                <thead>
-                    <tr class="border-none bg-royal text-white">
-                        <th class="p-2 py-4 border border-mid tracking-wider">Nombre</th>
-                        <th class="p-2 py-4 border border-mid tracking-wider">Direccion</th>
-                        <th class="p-2 py-4 border border-mid tracking-wider">Usuario</th>
-                        <th class="p-2 py-4 border border-mid tracking-wider">Acciones</th>
-                    </tr>
-                </thead>
+                        <thead>
+                            <tr class="border-none bg-royal text-white">
+                                <th class="p-2 py-4 border border-mid tracking-wider">Nombre</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider">Direccion</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider">Usuario</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider">Acciones</th>
+                            </tr>
+                        </thead>
 
-                <tbody>
-                    {items}
-                </tbody>
+                        <tbody>
+                            {items}
+                        </tbody>
 
-            </Table>
+                    </Table>
+                </div>
+
+            </section>
 
         </>
 
