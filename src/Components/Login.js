@@ -42,7 +42,7 @@ export function Login() {
                     </div>
                     
 
-                    <button type="submit"  className="bg-blue-900 w-40 p-2 font-bold rounded-2xl mt-4  text-lg">Iniciar Sesión</button>
+                    <button type="submit" class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-3xl">Iniciar Sesión</button> 
                 </div>
                 </Form>
             </div>
