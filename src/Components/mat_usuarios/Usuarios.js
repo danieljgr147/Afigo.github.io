@@ -47,11 +47,11 @@ export function Usuarios() {
                     <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/NuevoUsuario')}>Nuevo Usuario</button>
                 </div>
                     <Tabla
-                        usuario={usuario}
+                        usuario={usuario}  
                         updateState={refrescarInformacion}
                         id="tabla" />
             </section>
-        </section></>
+        </section></> 
 
 
     )

@@ -22,7 +22,6 @@ function Tabla_usuarios(props) {
         }));
     };
 
-    //array con info
     const items = props.usuario.map(item => {
         const itemId = item.user_id;
 
