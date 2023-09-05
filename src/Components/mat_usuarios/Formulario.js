@@ -111,7 +111,7 @@ function AddEditForm(props) {
                     onChange={onChange}
                     value={usuario.nombre_de_usuario === null ? "" : usuario.nombre_de_usuario}
                 />
-            </FormGroup>
+            </FormGroup> 
             <FormGroup>
                 <Label for="contrasenia">contrasenia</Label>
                 <Input

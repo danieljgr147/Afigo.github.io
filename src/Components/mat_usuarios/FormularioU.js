@@ -4,6 +4,40 @@ import { Nav } from "reactstrap";
 
 export function FormularioU() {
     const navigate = useNavigate()
+
+    const [usuario, setUsuario] = useState([{
+        user_id: 0,  
+        nombre: "",
+        direccion: "",
+        usuario_admin: 0,
+        nombre_de_usuario: "",
+        contrasenia: ""
+    }]);
+
+    const enviarDatos = async () => {
+        try {
+            const response = await fetch("https://AfigoControl.somee.com/API/api/user/create", {
+                method: 'POST',
+                body: JSON.stringify(usuario),
+                headers: {
+                    'Content-Type': "application/json; charset=utf-8",
+                    "Authorization": sessionStorage.getItem('Token')
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Hacer algo con la respuesta de la API si es necesario
+                console.log(data);
+            } else {
+                // Manejar errores de la API
+                console.error("Error al enviar los datos a la API");
+            }
+        } catch (error) {
+            console.error("Error en la solicitud POST:", error);
+        }
+    };
+
     return (
         <>
             <Nav />
