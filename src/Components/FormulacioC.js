@@ -3,7 +3,75 @@ import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 
 export function FormularioC() {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
+
+    const [pedido, setPedido] = useState([{
+        estado: "",
+        id_usuario: 1,
+        nombre_cliente: "",
+        factura_electronica: 0,
+        detalle_factura: "",
+        metodo_envio: "",
+        direccion_envio: "",
+        urgencia: "",
+        tipo_pedido: "1"
+    }]);
+
+    const enviarDatosPedido = async () => {
+        try {
+            const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
+                method: 'POST',
+                body: JSON.stringify(pedido),
+                headers: {
+                    'Content-Type': "application/json; charset=utf-8",
+                    "Authorization": sessionStorage.getItem('Token')
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Hacer algo con la respuesta de la API si es necesario
+                console.log(data);
+            } else {
+                // Manejar errores de la API
+                console.error("Error al enviar los datos del pedido a la API");
+            }
+        } catch (error) {
+            console.error("Error en la solicitud POST:", error);
+        }
+    };
+
+    const [detalle, setDetalle] = useState([{
+        id_pedido: 1,
+        nombre_producto: "",
+        cant_producto: 0,
+        descripcion: ""
+    }]);
+ 
+    const enviarDatosDetalle = async () => {
+        try {
+            const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/create", {
+                method: 'POST',
+                body: JSON.stringify(detalle),  
+                headers: {
+                    'Content-Type': "application/json; charset=utf-8",
+                    "Authorization": sessionStorage.getItem('Token')
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Hacer algo con la respuesta de la API si es necesario
+                console.log(data);
+            } else {
+                // Manejar errores de la API
+                console.error("Error al enviar los datos del detalle a la API");
+            }
+        } catch (error) {
+            console.error("Error en la solicitud POST:", error);
+        }
+    };
+
     return (
         <><Nav /><section class="flex flex-col w-full justify-center items-center">
             <div class="self-start ml-20 mt-10">
