@@ -28,7 +28,6 @@ export function FormularioU() {
 
             if (response.ok) {
                 const data = await response.json();
-                // Hacer algo con la respuesta de la API si es necesario
                 console.log(data);
             } else {
                 // Manejar errores de la API

@@ -18,6 +18,7 @@ export function FormularioV() {
         direccion_envio: "",
         urgencia: "",
         tipo_pedido: "1"
+        
     }]);
  
     const [detalle, setDetalle] = useState([{

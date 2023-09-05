@@ -13,7 +13,7 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
             ...editedItem,
             [e.target.name]: e.target.value
         });
-    };
+    }; 
 
     const submitFormEdit = async (e) => {
         e.preventDefault();
