@@ -120,7 +120,7 @@ function AddEditForm(props) {
                     id="contrasenia"
                     onChange={onChange}
                     value={usuario.contrasenia === null ? "" : usuario.contrasenia}
-                />
+                /> 
             </FormGroup>
             <Button>Agregar</Button>
         </Form>

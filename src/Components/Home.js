@@ -6,7 +6,7 @@ export function Home() {
     const navigate=useNavigate()
 
     return (
-        
+         
             <section class="flex flex-row w-full">
                 <div>
                     <Sidebar class="w-3/12"/>

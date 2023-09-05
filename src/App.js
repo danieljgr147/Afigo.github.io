@@ -29,7 +29,7 @@ function App() {
         <Route path="/formularioUsuario" element={<FormularioU/>}></Route>
       </Routes>    
     </>
-  );
+  ); 
 }
 
 export default App;

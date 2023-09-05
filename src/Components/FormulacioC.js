@@ -54,7 +54,7 @@ export function FormularioC() {
         try {
             const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/create", {
                 method: 'POST',
-                body: JSON.stringify(detalle),
+                body: JSON.stringify(detalle), 
                 headers: {
                     'Content-Type': "application/json; charset=utf-8",
                     "Authorization": sessionStorage.getItem('Token')

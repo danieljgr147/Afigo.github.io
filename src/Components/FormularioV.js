@@ -94,7 +94,7 @@ export function FormularioV() {
                         <input class="border border-navy w-1/2"
                         value={pedido.nombre_cliente}
                         onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
-                    </div>
+                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Tipo de factura</label>

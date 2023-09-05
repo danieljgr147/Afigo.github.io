@@ -110,10 +110,10 @@ export function EditarUsuario({ buttonLabel, item, updateState, contra, itemId }
                         />
                         <button type='submit' class="bg-navy text-white font-semibold mt-4 p-1 w-2/5 rounded-xl">Agregar</button>
                     </div>
-
+ 
                 </form>
             </div>
         </section>
 
     );
-}
+} 
