@@ -98,6 +98,7 @@ export function FormularioC() {
 
             </div>
 
+
             <section class="flex flex-col w-full justify-center items-center">
                 <form class="flex flex-col w-1/2 justify-center items-center pt-10">
                     <div class="pt-8 text-center">
@@ -140,4 +141,5 @@ export function FormularioC() {
             </section>
         </section>
     )
+
 }
