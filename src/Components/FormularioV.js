@@ -9,15 +9,15 @@ export function FormularioV() {
     //api/detalle/byPedido
     const navigate = useNavigate()
     const [pedido, setPedido] = useState([{
-        estado: "",
+        estado: "minor",
         id_usuario: 1,
-        nombre_cliente: "",
+        nombre_cliente: "daniel",
         factura_electronica: 0,
-        detalle_factura:"",
-        metodo_envio: "",
-        direccion_envio: "",
-        urgencia: "",
-        tipo_pedido: "1"
+        detalle_factura:"test",
+        metodo_envio: "test",
+        direccion_envio: "test",
+        urgencia: "test",
+        tipo_pedido: "test"
         
     }]);
  
@@ -30,9 +30,21 @@ export function FormularioV() {
 
     const enviarDatosPedido = async () => {
         try {
+
+            const params = {
+                estado: "minor",
+                id_usuario: 1,
+                nombre_cliente:  pedido.nombre_cliente,
+                factura_electronica: 0,
+                detalle_factura:"test",
+                metodo_envio: "test",
+                direccion_envio: "test",
+                urgencia: "test",
+                tipo_pedido: "test"
+            };
             const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
                 method: 'POST',
-                body: JSON.stringify(pedido),
+                body: JSON.stringify(params),
                 headers: {
                     'Content-Type': "application/json; charset=utf-8",
                     "Authorization": sessionStorage.getItem('Token')
