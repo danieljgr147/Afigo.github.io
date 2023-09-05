@@ -1,10 +1,8 @@
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-<<<<<<< Updated upstream
-=======
 import { Nav } from "reactstrap";
 import React, { useState } from "react";
->>>>>>> Stashed changes
+
 
 export function FormularioC() {
     const navigate = useNavigate()
@@ -14,7 +12,7 @@ export function FormularioC() {
         id_usuario: 1,
         nombre_cliente: "",
         factura_electronica: 0,
-        detalle_factura:"",
+        detalle_factura: "",
         metodo_envio: "",
         direccion_envio: "",
         urgencia: "",
@@ -99,9 +97,7 @@ export function FormularioC() {
                 <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
 
             </div>
-<<<<<<< Updated upstream
-        </section>
-=======
+
             <section class="flex flex-col w-full justify-center items-center">
                 <form class="flex flex-col w-1/2 justify-center items-center pt-10">
                     <div class="pt-8 text-center">
@@ -142,7 +138,6 @@ export function FormularioC() {
                     </table>
                 </div>
             </section>
-        </section></>
->>>>>>> Stashed changes
+        </section>
     )
 }
