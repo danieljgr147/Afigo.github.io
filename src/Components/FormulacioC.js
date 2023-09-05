@@ -49,7 +49,7 @@ export function FormularioC() {
         cant_producto: 0,
         descripcion: ""
     }]);
-
+ 
     const enviarDatosDetalle = async () => {
         try {
             const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/create", {
