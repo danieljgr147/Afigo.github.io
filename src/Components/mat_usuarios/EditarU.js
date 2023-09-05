@@ -122,9 +122,11 @@ export function EditarU(props) {
                             name="contrasenia"
                             id="contrasenia"
                             onChange={onChange}
+
                             value={usuario.contrasenia === null ? "" : usuario.contrasenia}
                         />
                         <button class="bg-navy text-white font-semibold mt-4 p-1 w-2/5 rounded-xl">Agregar</button>
+
                     </div>
                     
                 </form>
