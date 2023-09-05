@@ -24,6 +24,7 @@ function Tabla_usuarios(props) {
 
     const items = props.usuario.map(item => {
         const itemId = item.user_id;
+        const contra = item.contrasenia
 
         return (
             <>
@@ -40,7 +41,7 @@ function Tabla_usuarios(props) {
                     </td>
                 </tr>
                 <div class="w-full h-full flex flex-row">
-                    {showDivMap[itemId] && <>  <EditarU buttonLabel="Editar" item={item} updateState={props.updateState}></EditarU> </>}
+                    {showDivMap[itemId] && <>  <EditarU buttonLabel="Editar" itemId={itemId} item={item} updateState={props.updateState} contra={contra}></EditarU> </>}
                 </div>
             </>
         )

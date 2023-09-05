@@ -53,34 +53,44 @@ export function FormularioU() {
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Nombre</label>
-                        <input class="border border-navy w-1/2"></input>
+                        <input class="border border-navy w-1/2"
+                         value={usuario.nombre}
+                         onChange={(e) => setUsuario({ ...usuario, nombre: e.target.value })}></input>
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Direccion</label>
-                        <input class="border border-navy w-1/2"></input>
+                        <input class="border border-navy w-1/2"
+                        value={usuario.direccion}
+                        onChange={(e) => setUsuario({ ...usuario, direccion: e.target.value })}></input>
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Administrador</label>
-                        <select class="border border-navy w-1/2">
-                            <option class="border border-navy w-1/2">No</option>
-                            <option class="border border-navy w-1/2">Si</option>
+                        <select class="border border-navy w-1/2"
+                        value={usuario.usuario_admin}
+                        onChange={(e) => setUsuario({ ...usuario, usuario_admin: e.target.value })}>
+                            <option value="0" class="border border-navy w-1/2">No</option>
+                            <option value="1" class="border border-navy w-1/2">Si</option>
                         </select>
 
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Nombre de usuario</label>
-                        <input class="border border-navy w-1/2"></input>
+                        <input class="border border-navy w-1/2"
+                        value={usuario.nombre_de_usuario}
+                        onChange={(e) => setUsuario({ ...usuario, nombre_de_usuario: e.target.value })}></input>
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Contraseña</label>
-                        <input class="border border-navy w-1/2"></input>
+                        <input class="border border-navy w-1/2"
+                        value={usuario.contrasenia}
+                        onChange={(e) => setUsuario({ ...usuario, contrasenia: e.target.value })}></input>
                     </div>
 
-                    <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
+                    <button onClick={enviarDatos} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
 
                 </div>
             </section>
