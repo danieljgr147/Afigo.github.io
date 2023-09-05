@@ -1,6 +1,7 @@
 import { IoChevronBackCircleSharp} from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
+import { useState, useEffect } from 'react';
 
 export function FormularioC() {
     const navigate = useNavigate()
