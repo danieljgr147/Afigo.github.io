@@ -1,10 +1,8 @@
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-<<<<<<< Updated upstream
-=======
 import { Nav } from "reactstrap";
 import React, { useState } from "react";
->>>>>>> Stashed changes
+
 
 export function FormularioV() {
     //api/pedido/create
@@ -79,24 +77,12 @@ export function FormularioV() {
     };
 
     return (
-<<<<<<< Updated upstream
-        <section class="flex flex-col w-full justify-center items-center">
-            <div class="self-start ml-20 mt-10">
-                <button onClick={() => navigate('/')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy"/></button>
-            </div>
-            <div class="pt-8 ">
-                <h1 class="text-4xl font-bold text-royal">Formulario de ventas</h1>
-            </div>
-            <div class="flex flex-col w-1/2 justify-center items-center pt-20">
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Nombre del vendedor</label>
-                    <input class="border border-navy w-1/2"></input>
-=======
+
         <><Nav />
             <section class="flex flex-col w-full justify-center items-center">
                 <div class="self-start ml-20 mt-10">
                     <button onClick={() => navigate('/Inicio')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
->>>>>>> Stashed changes
+
                 </div>
                 <div class="pt-8 ">
                     <h1 class="text-4xl font-bold text-royal">Formulario de ventas</h1>
@@ -150,16 +136,6 @@ export function FormularioV() {
                     </div>
 
                     <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>
-
-<<<<<<< Updated upstream
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Tipo de factura</label>
-                    <select class="border border-navy w-1/2">
-                        <option >Factura electronica</option>
-                        <option>Factura fisica</option>
-                    </select>
-=======
->>>>>>> Stashed changes
                 </div>
             </section>
 
@@ -202,7 +178,6 @@ export function FormularioV() {
                         </tbody>
                     </table>
                 </div>
-<<<<<<< Updated upstream
 
                 <div class="flex flex-col m-4 w-full justify-center items-center">
                     <label class="font-semibold">Correo electronico</label>
@@ -258,12 +233,8 @@ export function FormularioV() {
                 </div>
 
                 <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
-
-            </div>
         </section>
-=======
-            </section>
         </>
->>>>>>> Stashed changes
+
     )
 }
