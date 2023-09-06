@@ -15,9 +15,12 @@ export const Auth = async (usuario, contrasenna) => {
     const dataToken = await tok.json()
 
     if (dataToken.token != undefined) {
+        sessionStorage.setItem('id_usuario', dataToken.id_Usuario);
         sessionStorage.setItem('Token', 'Bearer ' + dataToken.token);
         return "Auntenticado"
     } else {
         return "Error"
     }
 }
+
+//get session storage
