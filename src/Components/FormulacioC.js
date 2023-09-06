@@ -2,6 +2,7 @@ import { IoChevronBackCircleSharp} from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
+import { FormularioD } from "./FormularioD";
 
 export function FormularioC() {
     const navigate = useNavigate()
@@ -11,18 +12,31 @@ export function FormularioC() {
         id_usuario: 1,
         nombre_cliente: "",
         factura_electronica: 0,
-        detalle_factura: "",
+        detalle_factura:"",
         metodo_envio: "",
         direccion_envio: "",
         urgencia: "",
-        tipo_pedido: "1"
+        tipo_pedido: ""
+        
     }]);
 
     const enviarDatosPedido = async () => {
         try {
+
+            const params = {
+                estado: "Pendiente",
+                id_usuario: 1,
+                nombre_cliente:  pedido.nombre_cliente,
+                factura_electronica: 0,
+                detalle_factura:pedido.detalle_factura,
+                metodo_envio: "",
+                direccion_envio: "",
+                urgencia: "",
+                tipo_pedido: "Cotizacion"
+            };
             const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
                 method: 'POST',
-                body: JSON.stringify(pedido),
+                body: JSON.stringify(params),
                 headers: {
                     'Content-Type': "application/json; charset=utf-8",
                     "Authorization": sessionStorage.getItem('Token')
@@ -42,36 +56,6 @@ export function FormularioC() {
         }
     };
 
-    const [detalle, setDetalle] = useState([{
-        id_pedido: 1,
-        nombre_producto: "",
-        cant_producto: 0,
-        descripcion: ""
-    }]);
- 
-    const enviarDatosDetalle = async () => {
-        try {
-            const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/create", {
-                method: 'POST',
-                body: JSON.stringify(detalle),  
-                headers: {
-                    'Content-Type': "application/json; charset=utf-8",
-                    "Authorization": sessionStorage.getItem('Token')
-                }
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                // Hacer algo con la respuesta de la API si es necesario
-                console.log(data);
-            } else {
-                // Manejar errores de la API
-                console.error("Error al enviar los datos del detalle a la API");
-            }
-        } catch (error) {
-            console.error("Error en la solicitud POST:", error);
-        }
-    };
 
     return (
         <><Nav /><section class="flex flex-col w-full justify-center items-center">
@@ -83,30 +67,25 @@ export function FormularioC() {
             </div>
             <div class="flex flex-col w-1/2 justify-center items-center pt-20">
 
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Nombre del cliente</label>
-                    <input class="border border-navy w-1/2"></input>
-                </div>
-
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Producto y cantidad</label>
-                    <input class="border border-navy w-1/2"></input>
-                </div>
+            <div class="flex flex-col m-4 w-full justify-center items-center">
+                        <label class="font-semibold">Nombre del cliente</label>
+                        <input class="border border-navy w-1/2"
+                        value={pedido.nombre_cliente}
+                        onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
+                     </div>
 
 
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Descripcion del producto</label>
-                    <input class="border border-navy w-1/2"></input>
-                </div>
+                    <div class="flex flex-col m-4 w-full justify-center items-center">
+                        <label class="font-semibold">Informacion del cliente</label>
+                        <input class="border border-navy w-1/2"
+                        value={pedido.detalle_factura}
+                        onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
+                     </div>
 
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Contacto del cliente</label>
-                    <input class="border border-navy w-1/2"></input>
-                </div>
-
-                <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
-
+                    <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>
             </div>
-        </section></>
+        </section>
+        <FormularioD/>
+        </> 
     )
 }

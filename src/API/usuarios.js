@@ -65,3 +65,16 @@ export const Delete = async (params) => {
         }
     })
 }
+
+//post para detalles
+export const CreateDetalle = async (params) => {
+    console.log(params)
+    await fetch("https://AfigoControl.somee.com/API/api/detalle/create", {
+        method: 'POST',
+        body: JSON.stringify(params),
+        headers: {
+            'Content-Type': "application/json; charset=utf-8",
+            "Authorization": sessionStorage.getItem('Token')
+        }
+    })
+}

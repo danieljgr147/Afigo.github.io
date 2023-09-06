@@ -38,10 +38,10 @@ export function Usuarios() {
 
 
     return (
-        <><Nav /><section class="flex flex-row w-full">
-            <div>
-                <Sidebar class="w-3/12" />
-            </div>
+        <><Nav /><section class="flex flex-row w-full h-full">
+
+                <Sidebar class="w-3/12 h-auto" />
+
             <section class="alex flex-col w-9/12 ml-14">
                 <div class="m-5 p-5 "> 
                     <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/NuevoUsuario')}>Nuevo Usuario</button>

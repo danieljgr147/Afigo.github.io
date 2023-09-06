@@ -9,38 +9,31 @@ export function FormularioV() {
     //api/detalle/byPedido
     const navigate = useNavigate()
     const [pedido, setPedido] = useState([{
-        estado: "minor",
+        estado: "",
         id_usuario: 1,
-        nombre_cliente: "daniel",
+        nombre_cliente: "",
         factura_electronica: 0,
-        detalle_factura:"test",
-        metodo_envio: "test",
-        direccion_envio: "test",
-        urgencia: "test",
-        tipo_pedido: "test"
+        detalle_factura:"",
+        metodo_envio: "",
+        direccion_envio: "",
+        urgencia: "",
+        tipo_pedido: ""
         
     }]);
  
-    const [detalle, setDetalle] = useState([{
-        id_pedido: 0,
-        nombre_producto: "",
-        cant_producto: 0,
-        descripcion: ""
-    }]);
-
     const enviarDatosPedido = async () => {
         try {
 
             const params = {
-                estado: "minor",
+                estado: "Pendiente",
                 id_usuario: 1,
                 nombre_cliente:  pedido.nombre_cliente,
-                factura_electronica: 0,
-                detalle_factura:"test",
-                metodo_envio: "test",
-                direccion_envio: "test",
-                urgencia: "test",
-                tipo_pedido: "test"
+                factura_electronica: pedido.factura_electronica,
+                detalle_factura:pedido.detalle_factura,
+                metodo_envio: pedido.metodo_envio,
+                direccion_envio: pedido.direccion_envio,
+                urgencia: pedido.urgencia,
+                tipo_pedido: "Pedido"
             };
             const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
                 method: 'POST',
@@ -64,29 +57,6 @@ export function FormularioV() {
         }
     };
 
-    const enviarDatosDetalle = async () => {
-        try {
-            const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/create", {
-                method: 'POST',
-                body: JSON.stringify(detalle),
-                headers: {
-                    'Content-Type': "application/json; charset=utf-8",
-                    "Authorization": sessionStorage.getItem('Token')
-                }
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                // Hacer algo con la respuesta de la API si es necesario
-                console.log(data);
-            } else {
-                // Manejar errores de la API
-                console.error("Error al enviar los datos del detalle a la API");
-            }
-        } catch (error) {
-            console.error("Error en la solicitud POST:", error);
-        }
-    };
 
     return (
 
@@ -117,6 +87,13 @@ export function FormularioV() {
                             <option value="1">Factura fisica</option>
                         </select>
                     </div>
+
+                    <div class="flex flex-col m-4 w-full justify-center items-center">
+                        <label class="font-semibold">Informacion para factura</label>
+                        <input class="border border-navy w-1/2"
+                        value={pedido.detalle_factura}
+                        onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
+                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Metodo de envio</label>
@@ -151,49 +128,7 @@ export function FormularioV() {
                 </div>
             </section>
 
-            <section class="flex flex-col w-full justify-center items-center">
-                <form class="flex flex-col w-1/2 justify-center items-center pt-10">
-                    <div class="pt-8 text-center">
-                        <h1 class="text-4xl font-bold text-royal pb-2">Agregar productos</h1>
-                    </div>
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Producto</label>
-                        <input class="border border-navy w-1/2"
-                        value={detalle.nombre_producto}
-                        onChange={(e) => setDetalle({ ...detalle, nombre_producto: e.target.value })}></input>
-                    </div>
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Cantidad</label>
-                        <input class="border border-navy w-1/2"
-                        value={detalle.cant_producto}
-                        onChange={(e) => setDetalle({ ...detalle, cant_producto: e.target.value })}></input>
-                    </div>
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Descripcion</label>
-                        <input class="border border-navy w-1/2"
-                        value={detalle.descripcion}
-                        onChange={(e) => setDetalle({ ...detalle, descripcion: e.target.value })}></input>
-                    </div>
-                    <button onClick={enviarDatosDetalle} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Agregar</button>
-                </form>
-                <div>
-                    <table class="table-auto border-collapse border border-grotto self-center w-full">
-                        <thead>
-                            <tr class="border-none bg-royal text-white">
-                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Producto</th>
-                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Cantidad</th>
-                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Descripcion</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
-        </section>
+           
         </>
 
     )

@@ -16,7 +16,7 @@ export function Sidebar(){
   ];
   const [open, setOpen] = useState(true);
   return (
-    <section className="flex gap-6 absolute z-50">
+    <section className="flex gap-6 absolute z-50 h-auto">
       <div
         className={`bg-navy min-h-screen ${
           open ? "w-72" : "w-16"
