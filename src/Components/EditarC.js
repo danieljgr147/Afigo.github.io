@@ -1,11 +1,10 @@
-
 import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 
-export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
+export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
     const ID = pedidoId;
 
     const [editedItem, setEditedItem] = useState(item);
@@ -26,12 +25,12 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                 estado: e.target.estado.value,
                 id_usuario: 1,
                 nombre_cliente: e.target.nombre_cliente.value,
-                factura_electronica: parseInt(e.target.factura_electronica.value),
+                factura_electronica: 0,
                 detalle_factura: e.target.detalle_factura.value,
-                metodo_envio: e.target.metodo_envio.value,
-                direccion_envio: e.target.direccion_envio.value,
-                urgencia: e.target.urgencia.value,
-                tipo_pedido: "Pedido"
+                metodo_envio: "",
+                direccion_envio: "",
+                urgencia: "",
+                tipo_pedido: "Cotizacion"
             };
             console.log(params);
 
@@ -102,21 +101,22 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                             onChange={onChange}></input>
                     </div>
 
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Tipo de factura</label>
-                        <select class="border border-navy w-1/2"
-                            name="factura_electronica"
-                            id="factura_electronica"
-                            value={editedItem.factura_electronica === null ? "" : editedItem.factura_electronica}
-                            onChange={onChange}>
-                            <option value={1}></option>
-                            <option value={0}>Factura electronica</option>
-                            <option value={1}>Factura fisica</option>
-                        </select>
-                    </div>
+
+                    <select class="border border-navy w-1/2"
+                        name="factura_electronica"
+                        id="factura_electronica"
+                        value={editedItem.factura_electronica === null ? "" : editedItem.factura_electronica}
+                        onChange={onChange}
+                        style={{ display: 'none' }}>
+
+                        <option value={1}></option>
+                        <option value={0}>Factura electronica</option>
+                        <option value={1}>Factura fisica</option>
+                    </select>
+
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Informacion para factura</label>
+                        <label class="font-semibold">Informacion de Cliente</label>
                         <input class="border border-navy w-1/2"
                             name="detalle_factura"
                             id="detalle_factura"
@@ -124,28 +124,24 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                             onChange={onChange}></input>
                     </div>
 
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Metodo de envio</label>
-                        <select class="border border-navy w-1/2"
-                            name="metodo_envio"
-                            id="metodo_envio"
-                            value={editedItem.metodo_envio === null ? "" : editedItem.metodo_envio}
-                            onChange={onChange}>
-                            <option value=""></option>
-                            <option value="Express">Express</option>
-                            <option value="Encomienda">Encomienda</option>
-                        </select>
-                    </div>
+                    <select class="border border-navy w-1/2"
+                        name="metodo_envio"
+                        id="metodo_envio"
+                        value={editedItem.metodo_envio === null ? "" : editedItem.metodo_envio}
+                        onChange={onChange}
+                        style={{ display: 'none' }}>
+                        <option value=""></option>
+                        <option value="Express">Express</option>
+                        <option value="Encomienda">Encomienda</option>
+                    </select>
 
+                    <input class="border border-navy w-1/2"
+                        name="direccion_envio"
+                        id="direccion_envio"
+                        value={editedItem.direccion_envio === null ? "" : editedItem.direccion_envio}
+                        onChange={onChange}
+                        style={{ display: 'none' }}></input>
 
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Direccion</label>
-                        <input class="border border-navy w-1/2"
-                            name="direccion_envio"
-                            id="direccion_envio"
-                            value={editedItem.direccion_envio === null ? "" : editedItem.direccion_envio}
-                            onChange={onChange}></input>
-                    </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Estado</label>
@@ -160,22 +156,22 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                         </select>
                     </div>
 
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Urgencia</label>
-                        <select class="border border-navy w-1/2"
-                            name="urgencia"
-                            id="urgencia"
-                            value={editedItem.urgencia === null ? "" : editedItem.urgencia}
-                            onChange={onChange}>
-                            <option value=""></option>
-                            <option value="Leve">Leve</option>
-                            <option value="Moderado">Moderado</option>
-                            <option value="Urgente">Urgente</option>
-                        </select>
-                    </div>
+                    <select class="border border-navy w-1/2"
+                        name="urgencia"
+                        id="urgencia"
+                        value={editedItem.urgencia === null ? "" : editedItem.urgencia}
+                        onChange={onChange}
+                        style={{ display: 'none' }}>
+                        <option value=""></option>
+                        <option value="Leve">Leve</option>
+                        <option value="Moderado">Moderado</option>
+                        <option value="Urgente">Urgente</option>
+                    </select>
+
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <button type='submit' class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl w-1/5">Enviar</button>
                     </div>
+                    
                 </form>
 
             </div>
@@ -183,14 +179,3 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
 
     );
 }
-
-/* id_pedido: ID,
-                estado: "listo",
-                id_usuario: 1,
-                nombre_cliente: e.target.nombre_cliente.value,
-                factura_electronica: parseInt(e.target.factura_electronica.value),
-                detalle_factura: e.target.detalle_factura.value,
-                metodo_envio: e.target.metodo_envio.value,
-                direccion_envio: e.target.direccion_envio.value,
-                urgencia: e.target.urgencia.value,
-                tipo_pedido: "Pedido"*/

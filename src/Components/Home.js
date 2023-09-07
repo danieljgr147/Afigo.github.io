@@ -5,12 +5,13 @@ import { useState, useEffect } from 'react';
 import { EditarV } from "./EditarV";
 import { FaX } from "react-icons/fa6";
 import { DetalleP } from "./DetalleP";
+import { DetallePedido } from "./DetallePedido";
 
 export function Home(props) {
     const navigate = useNavigate()
 
     const [showDivMap, setShowDivMap] = useState({});
-
+    const [showDivMap1, setShowDivMap1] = useState({});
     const [showDiv, setShowDiv] = useState(false);
 
     const toggleDiv = (pedidoId) => {
@@ -19,10 +20,13 @@ export function Home(props) {
             [pedidoId]: !prevState[pedidoId] || false
         }));
     };
-
-    const toggleDiv1 = () => {
-        setShowDiv(!showDiv);
+    const toggleDiv1 = (IdPedido) => {
+        setShowDivMap1(prevState => ({
+            ...prevState,
+            [IdPedido]: !prevState[IdPedido] || false
+        }));
     };
+
 
 
     const closeDiv = (pedidoId) => {
@@ -32,9 +36,12 @@ export function Home(props) {
         }));
     };
 
-    const closeDiv1 = () => {
-        setShowDiv(false);
-      };
+    const closeDiv1 = (IdPedido) => {
+        setShowDivMap1(prevState => ({
+            ...prevState,
+            [IdPedido]: false
+        }));
+    };
 
     const apiUrl = 'https://AfigoControl.somee.com/API/api/pedido/ByTypePedido';
     const tipoPedido = 'pedido';
@@ -82,9 +89,7 @@ export function Home(props) {
 
         // Formatear la fecha en el formato deseado (YYYY-MM-DD)
         const fechaFormateada = `${año}-${mes}-${día}`;
-        console.log("fecha formateada****")
-        console.log(item.id_pedido)
-        console.log(fechaFormateada); 
+
 
         return (
             <>
@@ -99,12 +104,13 @@ export function Home(props) {
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.urgencia}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaFormateada}</td>
 
-                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"><div class="flex flex-col"><button onClick={toggleDiv1} class="p-1 font-bold hover:text-grotto ">Ver mas</button> <button onClick={() => toggleDiv(pedidoId)} class="font-bold hover:text-grotto ">Editar</button></div></td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"><div class="flex flex-col"><button onClick={() => toggleDiv1(IdPedido)} class="p-1 font-bold hover:text-grotto ">Ver mas</button> <button onClick={() => toggleDiv(pedidoId)} class="font-bold hover:text-grotto ">Editar</button></div></td>
                 </tr>
                 <div class="w-full h-full flex flex-row">
-                    {showDivMap[pedidoId] && <>  <EditarV buttonLabel="Editar" item={item} updateState={props.updateState} pedidoId={pedidoId}></EditarV> </>}
-                    {showDiv && <DetalleP buttonLabel="VerMas" item={item} updateState={props.updateState} IdPedido={IdPedido}></DetalleP>}
+                    {showDivMap[pedidoId] && <>  <EditarV buttonLabel="Editar" item={item} updateState={props.updateState} pedidoId={pedidoId}></EditarV>  </>}
+                    
                 </div>
+                <div>{showDivMap1[IdPedido] && <> <DetalleP buttonLabel="Ver mas" item={item} updateState={props.updateState} IdPedido={IdPedido} ></DetalleP> </>}</div>
             </>
         );
     });
@@ -129,9 +135,13 @@ export function Home(props) {
                     )
                 ))}
                 
-                {showDiv &&  <div class="w-full flex flex-col">
-                            <button class="z-[2000] w-1/5 translate-y-[-4.5rem] self-end flex fixed  justify-end" onClick={closeDiv1}> <FaX class="h-auto w-[1.3rem] drop-shadow-2xl fill-white sm:w-[2rem]" /> </button>
-                        </div>}
+                {Object.keys(showDivMap1).map(item => (
+                    showDivMap1[item] && (
+                        <div key={`close-${item}`} class="w-full flex flex-col">
+                            <button class="z-[1000] w-1/5 translate-y-[-4.5rem] self-end flex fixed  justify-end" onClick={() => closeDiv1(item)}> <FaX class="h-auto w-[1.3rem] drop-shadow-2xl fill-white sm:w-[2rem]" /> </button>
+                        </div>
+                    )
+                ))}
                
                 <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
 

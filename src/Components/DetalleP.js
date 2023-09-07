@@ -3,20 +3,20 @@ import React, { useEffect, useState } from 'react';
 export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
     const id_pedido=IdPedido;
     const [detalle, setDetalle] = useState([]);
-
-
+   
+    console.log("*********")
+    console.log(id_pedido)
 
     useEffect(() => {
 
         // Función para hacer la solicitud GET a la API
         const fetchDetalle = async () => {
             try {
-                console.log("*********")
-                console.log(id_pedido)
+                
             
                 const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/All", {
                     method: 'POST',
-                    body: 1,
+                    body: id_pedido,
                     headers: {
                         'Content-Type': "application/json; charset=utf-8",
                         "Authorization": sessionStorage.getItem('Token')
