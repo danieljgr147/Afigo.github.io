@@ -4,11 +4,14 @@ import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
 import { FormularioD } from "../Detalle/FormularioD";
 
-export function FormularioV({ idUsuario }) {
+export function FormularioV() {
     //api/pedido/create
     //api/detalle/create
     //api/detalle/byPedido
-    console.log( idUsuario )
+    
+    const ID = sessionStorage.getItem('id_usuario')
+    console.log("*ID *")
+    console.log( ID )
     const navigate = useNavigate()
     const pedidos = [];
     const [pedidoId, setPedidoId] = useState(null);
@@ -20,7 +23,7 @@ export function FormularioV({ idUsuario }) {
 
     const [pedido, setPedido] = useState([{
         estado: "",
-        id_usuario: 1,
+        id_usuario: ID,
         nombre_cliente: "",
         factura_electronica: 0,
         detalle_factura: "",

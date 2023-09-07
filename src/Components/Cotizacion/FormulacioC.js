@@ -6,6 +6,7 @@ import { FormularioD } from "../Detalle/FormularioD";
 
 export function FormularioC() {
     const navigate = useNavigate()
+    const ID = sessionStorage.getItem('id_usuario')
     const [pedidoId, setPedidoId] = useState(null);
     const [showDiv, setShowDiv] = useState(false);
 
@@ -15,7 +16,7 @@ export function FormularioC() {
 
     const [pedido, setPedido] = useState([{
         estado: "",
-        id_usuario: 1,
+        id_usuario: ID,
         nombre_cliente: "",
         factura_electronica: 0,
         detalle_factura: "",
