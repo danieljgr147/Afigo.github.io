@@ -13,7 +13,7 @@ function Tabla_usuarios(props) {
             ...prevState,
             [itemId]: !prevState[itemId] || false
         }));
-    };
+    }; 
 
     const closeDiv = (itemId) => {
         setShowDivMap(prevState => ({

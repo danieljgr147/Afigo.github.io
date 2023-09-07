@@ -12,12 +12,14 @@ export function FormularioD() {
 
     const enviarDatosDetalle = async (e) => {
         e.preventDefault();
+        console.log("*****")
+        console.log(detalle.cant_producto)
         try {
 
             const params = {
                 id_pedido:1,
                 nombre_producto:detalle.nombre_producto,
-                cant_producto: detalle.cant_producto,
+                cant_producto: parseInt(detalle.cant_producto),
                 descripcion: detalle.descripcion
             }
 
@@ -72,7 +74,6 @@ export function FormularioD() {
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Cantidad</label>
                         <input class="border border-navy w-1/2"
-                        type="number"
                         name="cant_producto"
                         id="cant_producto"
                         value={detalle.cant_producto}

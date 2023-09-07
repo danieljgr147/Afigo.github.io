@@ -2,6 +2,7 @@ import { IoChevronBackCircleSharp} from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
+import { FormularioD } from "./FormularioD";
 
 export function FormularioV() {
     //api/pedido/create
@@ -23,12 +24,11 @@ export function FormularioV() {
  
     const enviarDatosPedido = async () => {
         try {
-
             const params = {
                 estado: "Pendiente",
                 id_usuario: 1,
                 nombre_cliente:  pedido.nombre_cliente,
-                factura_electronica: pedido.factura_electronica,
+                factura_electronica: parseInt(pedido.factura_electronica),
                 detalle_factura:pedido.detalle_factura,
                 metodo_envio: pedido.metodo_envio,
                 direccion_envio: pedido.direccion_envio,
@@ -81,10 +81,11 @@ export function FormularioV() {
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Tipo de factura</label>
                         <select class="border border-navy w-1/2"
-                        value={pedido.factura_electronica}
-                        onChange={(e) => setPedido({ ...pedido, factura_electronica: e.target.value })}>
-                            <option value="0">Factura electronica</option>
-                            <option value="1">Factura fisica</option>
+                            value={pedido.factura_electronica}
+                            onChange={(e) => setPedido({ ...pedido, factura_electronica: e.target.value })}>
+                            <option value={1}></option>
+                            <option value={0}>Factura electronica</option>
+                            <option value={1}>Factura fisica</option>
                         </select>
                     </div>
 
@@ -100,8 +101,9 @@ export function FormularioV() {
                         <select class="border border-navy w-1/2"
                         value={pedido.metodo_envio}
                         onChange={(e) => setPedido({ ...pedido, metodo_envio: e.target.value })}>
-                            <option value="0">Express</option>
-                            <option value="1">Encomienda</option>
+                            <option value=""></option>
+                            <option value="Express">Express</option>
+                            <option value="Encomienda">Encomienda</option>
                         </select>
                     </div>
 
@@ -118,16 +120,17 @@ export function FormularioV() {
                         <label class="font-semibold">Urgencia</label>
                         <select class="border border-navy w-1/2" value={pedido.urgencia}
                         onChange={(e) => setPedido({ ...pedido, urgencia: e.target.value })}>
-                            <option value="0">Leve</option>
-                            <option value="1">Moderado</option>
-                            <option value="2">Urgente</option>
+                            <option value=""></option>
+                            <option value="Leve">Leve</option>
+                            <option value="Moderado">Moderado</option>
+                            <option value="Urgente">Urgente</option>
                         </select>
                     </div>
 
                     <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>
                 </div>
             </section>
-
+            <FormularioD/>
            
         </>
 

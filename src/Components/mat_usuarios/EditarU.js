@@ -15,7 +15,7 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
         });
     }; 
 
-    const submitFormEdit = async (e) => {
+    const submitFormEdit = async (e) => { 
         e.preventDefault();
         const params = {
             user_id: parseInt(e.target.user_id.value),
