@@ -95,7 +95,7 @@ export function Cotizacion(props) {
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_cliente}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.detalle_factura}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.estado}</td>
-                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"><div class="flex flex-col"><button onClick={toggleDiv1} class="p-1 font-bold hover:text-grotto ">Ver mas</button> <button onClick={() => toggleDiv(pedidoId)} class="font-bold hover:text-grotto ">Editar</button></div></td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"><div class="flex flex-col"><button onClick={() => toggleDiv1(IdPedido)} class="p-1 font-bold hover:text-grotto ">Ver mas</button> <button onClick={() => toggleDiv(pedidoId)} class="font-bold hover:text-grotto ">Editar</button></div></td>
                 </tr>
                 <div class="w-full h-full flex flex-row">
                     {showDivMap[pedidoId] && <>  <EditarC buttonLabel="Editar" item={item} updateState={props.updateState} pedidoId={pedidoId}></EditarC> </>}
@@ -123,9 +123,14 @@ export function Cotizacion(props) {
                     )
                 ))}
                 
-                {showDiv &&  <div class="w-full flex flex-col">
-                            <button class="z-[2000] w-1/5 translate-y-[-4.5rem] self-end flex fixed  justify-end" onClick={closeDiv1}> <FaX class="h-auto w-[1.3rem] drop-shadow-2xl fill-white sm:w-[2rem]" /> </button>
-                        </div>}
+                
+                {Object.keys(showDivMap1).map(item => (
+                    showDivMap1[item] && (
+                        <div key={`close-${item}`} class="w-full flex flex-col">
+                            <button class="z-[1000] w-1/5 translate-y-[-4.5rem] self-end flex fixed  justify-end" onClick={() => closeDiv1(item)}> <FaX class="h-auto w-[1.3rem] drop-shadow-2xl fill-white sm:w-[2rem]" /> </button>
+                        </div>
+                    )
+                ))}
                 <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
                     <table class="table-auto border-collapse border border-grotto self-center w-full">
 
