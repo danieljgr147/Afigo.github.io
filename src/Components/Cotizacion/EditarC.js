@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
     const ID = pedidoId;
-
+    const IDusuario = sessionStorage.getItem('id_usuario')
     const [editedItem, setEditedItem] = useState(item);
 
     const onChange = (e) => {
@@ -23,7 +23,7 @@ export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
             const params = {
                 id_pedido: ID,
                 estado: e.target.estado.value,
-                id_usuario: 1,
+                id_usuario: parseInt(IDusuario),
                 nombre_cliente: e.target.nombre_cliente.value,
                 factura_electronica: 0,
                 detalle_factura: e.target.detalle_factura.value,

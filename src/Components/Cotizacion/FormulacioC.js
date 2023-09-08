@@ -37,7 +37,7 @@ export function FormularioC() {
 
             const params = {
                 estado: "Pendiente",
-                id_usuario: 1,
+                id_usuario: parseInt(ID),
                 nombre_cliente: pedido.nombre_cliente,
                 factura_electronica: 0,
                 detalle_factura: pedido.detalle_factura,

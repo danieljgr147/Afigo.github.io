@@ -7,7 +7,6 @@ export function FormularioU() {
     const navigate = useNavigate()
 
     const [usuario, setUsuario] = useState([{
-        user_id: 0,  
         nombre: "",
         direccion: "",
         usuario_admin: 0,

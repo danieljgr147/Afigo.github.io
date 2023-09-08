@@ -43,7 +43,7 @@ export function FormularioV() {
         try {
             const params = {
                 estado: "Pendiente",
-                id_usuario: 1,
+                id_usuario: parseInt(ID),
                 nombre_cliente: pedido.nombre_cliente,
                 factura_electronica: parseInt(pedido.factura_electronica),
                 detalle_factura: pedido.detalle_factura,
@@ -79,9 +79,7 @@ export function FormularioV() {
         }
     };
 
-    if (pedidos.length > 0) {
-        console.log("ID del primer pedido en el array:", pedidos[0].id_pedido);
-    }
+   
 
 
     return (
