@@ -16,13 +16,20 @@ export function FormularioU() {
 
     const enviarDatos = async () => {
         try {
+            const params = {
+                nombre: usuario.nombre,
+                direccion: usuario.direccion,
+                usuario_admin: parseInt(usuario.usuario_admin),
+                nombre_de_usuario: usuario.nombre_de_usuario,
+                contrasenia: usuario.contrasenia
+            }
             const response = await fetch("https://AfigoControl.somee.com/API/api/user/create", {
                 method: 'POST',
-                body: JSON.stringify(usuario),
+                body: JSON.stringify(params),
                 headers: {
                     'Content-Type': "application/json; charset=utf-8",
                     "Authorization": sessionStorage.getItem('Token')
-                } 
+                }  
             });
 
             if (response.ok) {
@@ -68,8 +75,8 @@ export function FormularioU() {
                         <select class="border border-navy w-1/2"
                         value={usuario.usuario_admin}
                         onChange={(e) => setUsuario({ ...usuario, usuario_admin: e.target.value })}>
-                            <option value="0" class="border border-navy w-1/2">No</option>
-                            <option value="1" class="border border-navy w-1/2">Si</option>
+                            <option value={0} class="border border-navy w-1/2">No</option>
+                            <option value={1} class="border border-navy w-1/2">Si</option>
                         </select>
 
                     </div>
