@@ -104,11 +104,16 @@ export function Home(props) {
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.urgencia}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaFormateada}</td>
 
-                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"><div class="flex flex-col"><button onClick={() => toggleDiv1(IdPedido)} class="p-1 font-bold hover:text-grotto ">Ver mas</button> <button onClick={() => toggleDiv(pedidoId)} class="font-bold hover:text-grotto ">Editar</button></div></td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">
+                        <div class="flex flex-col">
+                            <button onClick={() => toggleDiv1(IdPedido)} class="w-[77.63px] p-1 font-semibold bg-royal text-white rounded-xl pl-2 pr-2 mb-1 hover:text-grotto ">Ver mas</button>
+                            <button onClick={() => toggleDiv(pedidoId)} class=" p-1 font-semibold bg-royal text-white rounded-xl pl-2 pr-2 hover:text-grotto ">Editar</button>
+                        </div>
+                    </td>
                 </tr>
                 <div class="w-full h-full flex flex-row">
                     {showDivMap[pedidoId] && <>  <EditarV buttonLabel="Editar" item={item} updateState={props.updateState} pedidoId={pedidoId}></EditarV>  </>}
-                    
+
                 </div>
                 <div>{showDivMap1[IdPedido] && <> <DetalleP buttonLabel="Ver mas" item={item} updateState={props.updateState} IdPedido={IdPedido} ></DetalleP> </>}</div>
             </>
@@ -118,9 +123,9 @@ export function Home(props) {
 
 
     return (
-        <><Nav /><section class="flex flex-row w-full">
-            <div>
-                <Sidebar class="w-3/12" />
+        <><Nav /><section class="flex flex-row w-full h-full">
+            <div class="h-full">
+                <Sidebar class="w-3/12 h-full" />
             </div>
             <section class="flex flex-col w-9/12 ml-14 ">
                 <div class="m-5 p-5 ">
@@ -134,7 +139,7 @@ export function Home(props) {
                         </div>
                     )
                 ))}
-                
+
                 {Object.keys(showDivMap1).map(item => (
                     showDivMap1[item] && (
                         <div key={`close-${item}`} class="w-full flex flex-col">
@@ -142,7 +147,7 @@ export function Home(props) {
                         </div>
                     )
                 ))}
-               
+
                 <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
 
                     <table class="table-auto border-collapse border border-grotto self-center w-full">

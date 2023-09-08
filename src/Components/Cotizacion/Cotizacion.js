@@ -8,7 +8,7 @@ import { DetalleP } from "../Detalle/DetalleP";
 
 export function Cotizacion(props) {
     const [cotizacion, setCotizacion] = useState([]);
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const [showDivMap, setShowDivMap] = useState({});
     const [showDivMap1, setShowDivMap1] = useState({});
     const [showDiv, setShowDiv] = useState(false);
@@ -85,17 +85,22 @@ export function Cotizacion(props) {
         const fechaFormateada = `${año}-${mes}-${día}`;
         console.log("fecha formateada****")
         console.log(item.id_pedido)
-        console.log(fechaFormateada); 
+        console.log(fechaFormateada);
 
         return (
             <>
                 <tr key={pedidoId} class="even:bg-grotto odd:bg-baby">
-                <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaFormateada}</td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaFormateada}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_cliente}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.detalle_factura}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.estado}</td>
-                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"><div class="flex flex-col"><button onClick={() => toggleDiv1(IdPedido)} class="p-1 font-bold hover:text-grotto ">Ver mas</button> <button onClick={() => toggleDiv(pedidoId)} class="font-bold hover:text-grotto ">Editar</button></div></td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">
+                        <div class="flex flex-col">
+                            <button onClick={() => toggleDiv1(IdPedido)} class="self-center w-[77.63px] p-1 font-semibold bg-royal text-white rounded-xl mb-1 hover:text-grotto ">Ver mas</button>
+                            <button onClick={() => toggleDiv(pedidoId)} class="self-center w-[77.63px] p-1 font-semibold bg-royal text-white rounded-xl pl-2 pr-2 hover:text-grotto ">Editar</button>
+                        </div>
+                    </td>
                 </tr>
                 <div class="w-full h-full flex flex-row">
                     {showDivMap[pedidoId] && <>  <EditarC buttonLabel="Editar" item={item} updateState={props.updateState} pedidoId={pedidoId}></EditarC> </>}
@@ -122,8 +127,8 @@ export function Cotizacion(props) {
                         </div>
                     )
                 ))}
-                
-                
+
+
                 {Object.keys(showDivMap1).map(item => (
                     showDivMap1[item] && (
                         <div key={`close-${item}`} class="w-full flex flex-col">
@@ -143,7 +148,7 @@ export function Cotizacion(props) {
                                 <th class="p-2 py-4 border border-mid tracking-wider">Estado</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Acciones</th>
                             </tr>
-                        </thead> 
+                        </thead>
                         <tbody>
                             {tableRows}
                         </tbody>
@@ -153,6 +158,6 @@ export function Cotizacion(props) {
             </section>
         </section></>
 
-        
+
     )
 }

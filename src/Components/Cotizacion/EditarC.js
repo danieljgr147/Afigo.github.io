@@ -47,7 +47,7 @@ export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
                 const data = await response.json();
                 // Hacer algo con la respuesta de la API si es necesario
                 console.log(data);
-                toast.success('Usuario actualizado con éxito', {
+                toast.success('Cotizacion actualizada con éxito', {
                     position: 'top-right',
                     autoClose: 3000, // Duración en milisegundos
                     hideProgressBar: false,

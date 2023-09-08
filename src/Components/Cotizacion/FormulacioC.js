@@ -9,9 +9,14 @@ export function FormularioC() {
     const ID = sessionStorage.getItem('id_usuario')
     const [pedidoId, setPedidoId] = useState(null);
     const [showDiv, setShowDiv] = useState(false);
+    const [showDiv1, setShowDiv1] = useState(true);
 
     const toggleDiv = () => {
         setShowDiv(!showDiv);
+    };
+
+    const toggleDiv1 = () => {
+        setShowDiv1(!showDiv1);
     };
 
     const [pedido, setPedido] = useState([{
@@ -58,6 +63,7 @@ export function FormularioC() {
                 setPedidoId(idPedido);
                 console.log("ID ID ID:", pedidoId)
                 toggleDiv();
+                toggleDiv1() 
             } else {
                 // Manejar errores de la API
                 console.error("Error al enviar los datos del pedido a la API");
@@ -93,13 +99,13 @@ export function FormularioC() {
                         onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
                 </div>
 
-                <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>
+               {showDiv1 && <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>} 
             </div>
         </section>
             {showDiv && <FormularioD idPedido={pedidoId} />}
 
             <div class="flex flex-col items-center justify-center mt-2 mb-4">
-                <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Inicio')}>Listo</button>
+                <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Cotizacion')}>Listo</button>
             </div>
         </>
     )

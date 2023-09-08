@@ -7,7 +7,8 @@ import { toast } from 'react-toastify';
 
 export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
     const ID = pedidoId;
-
+  
+    const IDusuario = sessionStorage.getItem('id_usuario')
     const [editedItem, setEditedItem] = useState(item);
 
     const onChange = (e) => {
@@ -24,7 +25,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
             const params = {
                 id_pedido: ID,
                 estado: e.target.estado.value,
-                id_usuario: 1,
+                id_usuario: parseInt(IDusuario),
                 nombre_cliente: e.target.nombre_cliente.value,
                 factura_electronica: parseInt(e.target.factura_electronica.value),
                 detalle_factura: e.target.detalle_factura.value,
@@ -48,7 +49,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                 const data = await response.json();
                 // Hacer algo con la respuesta de la API si es necesario
                 console.log(data);
-                toast.success('Usuario actualizado con éxito', {
+                toast.success('Pedido actualizado con éxito', {
                     position: 'top-right',
                     autoClose: 3000, // Duración en milisegundos
                     hideProgressBar: false,
@@ -67,8 +68,8 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
 
     useEffect(() => {
         if (editedItem) {
-            const { estado, id_usuario, nombre_cliente, factura_electronica, detalle_factura, metodo_envio, direccion_envio, urgencia, tipo_pedido } = editedItem;
-            setEditedItem({ estado, id_usuario, nombre_cliente, factura_electronica, detalle_factura, metodo_envio, direccion_envio, urgencia, tipo_pedido });
+            const {id_pedido, estado, id_usuario, nombre_cliente, factura_electronica, detalle_factura, metodo_envio, direccion_envio, urgencia, tipo_pedido } = editedItem;
+            setEditedItem({ id_pedido, estado, id_usuario, nombre_cliente, factura_electronica, detalle_factura, metodo_envio, direccion_envio, urgencia, tipo_pedido });
         }
     }, [editedItem]);
 
@@ -109,7 +110,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                             id="factura_electronica"
                             value={editedItem.factura_electronica === null ? "" : editedItem.factura_electronica}
                             onChange={onChange}>
-                            <option value={1}></option>
+                            <option value={2}></option>
                             <option value={0}>Factura electronica</option>
                             <option value={1}>Factura fisica</option>
                         </select>

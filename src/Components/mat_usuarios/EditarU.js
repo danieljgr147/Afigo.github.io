@@ -27,6 +27,7 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
         };
 
         await Update(params)
+        console.log(params)
         updateState(params)
         toast.success('Usuario actualizado con éxito', {
             position: 'top-right',

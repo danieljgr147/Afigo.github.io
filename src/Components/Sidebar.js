@@ -14,11 +14,11 @@ export function Sidebar(){
     { name: "Cotizaciones", link: "/Cotizacion", icon: AiOutlineForm },
     { name: "Usuarios", link: "/Usuarios", icon: AiOutlineUser },
   ];
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
-    <section className="flex gap-6 absolute z-50 h-auto">
+    <section className="flex gap-6 absolute z-50 h-full">
       <div
-        className={`bg-navy min-h-screen ${
+        className={`bg-navy h-full ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >
@@ -52,7 +52,7 @@ export function Sidebar(){
               <h2
                 className={`${
                   open && "hidden"
-                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden `}
               >
                 {menu?.name}
               </h2>

@@ -29,12 +29,12 @@ function Tabla_usuarios(props) {
         return (
             <>
                 <tr class="even:bg-grotto odd:bg-baby" key={item.user_id}>
-                    <td class="p-2 py-4 border-b border-mid tracking-wider">{item.nombre} </td>
-                    <td class="p-2 py-4 border-b border-mid tracking-wider">{item.direccion} </td>
-                    <td class="p-2 py-4 border-b border-mid tracking-wider">{item.nombre_de_usuario} </td>
-                    <td class="p-2 py-4 border-b border-mid tracking-wider">
-                        <div style={{ width: "110px" }}>
-                            <button onClick={() => toggleDiv(itemId)}>Editar</button>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre} </td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.direccion} </td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_de_usuario} </td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"> 
+                        <div >
+                            <button class="bg-royal text-white font-semibold p-1 rounded-xl pl-2 pr-2" onClick={() => toggleDiv(itemId)}>Editar</button>
 
                             {' '}
                         </div>
@@ -63,10 +63,10 @@ function Tabla_usuarios(props) {
 
                         <thead>
                             <tr class="border-none bg-royal text-white">
-                                <th class="p-2 py-4 border border-mid tracking-wider">Nombre</th>
-                                <th class="p-2 py-4 border border-mid tracking-wider">Direccion</th>
-                                <th class="p-2 py-4 border border-mid tracking-wider">Usuario</th>
-                                <th class="p-2 py-4 border border-mid tracking-wider">Acciones</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Nombre</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Direccion</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Usuario</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Acciones</th>
                             </tr>
                         </thead>
 
