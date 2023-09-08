@@ -22,7 +22,7 @@ export function FormularioU() {
                 headers: {
                     'Content-Type': "application/json; charset=utf-8",
                     "Authorization": sessionStorage.getItem('Token')
-                }
+                } 
             });
 
             if (response.ok) {
