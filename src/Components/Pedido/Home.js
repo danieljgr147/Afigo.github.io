@@ -107,7 +107,7 @@ export function Home(props) {
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">
                         <div class="flex flex-col">
                             <button onClick={() => toggleDiv1(IdPedido)} class="w-[77.63px] p-1 font-semibold bg-royal text-white rounded-xl pl-2 pr-2 mb-1 hover:text-grotto ">Ver mas</button>
-                            <button onClick={() => toggleDiv(pedidoId)} class=" p-1 font-semibold bg-royal text-white rounded-xl pl-2 pr-2 hover:text-grotto ">Editar</button>
+                            <button onClick={() => toggleDiv(pedidoId)} class="w-[77.63px] p-1 font-semibold bg-royal text-white rounded-xl pl-2 pr-2 hover:text-grotto ">Editar</button>
                         </div>
                     </td>
                 </tr>
