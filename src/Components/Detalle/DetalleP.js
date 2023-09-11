@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { EditarD } from './EditarD';
 import { FaX } from "react-icons/fa6";
+import { AgregarD } from './AgregarD';
+import { useNavigate } from "react-router-dom";
+
 
 export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
     const id_pedido=IdPedido;
     const [detalle, setDetalle] = useState([]);
     const [editedItem, setEditedItem] = useState(item);
 
+    const navigate = useNavigate()
     const [showDivMap, setShowDivMap] = useState({});
+    const [showDiv, setShowDiv] = useState({})
+    const [showDiv1, setShowDiv1] = useState(true);
+
 
     const toggleDiv = (IdDetalle) => {
         setShowDivMap(prevState => ({
@@ -21,6 +28,25 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
             ...prevState,
             [IdDetalle]: false
         }));
+    };
+
+    const toggleDiv1 = (id_pedido) => {
+        setShowDiv(prevState => ({
+            ...prevState,
+            [id_pedido]: !prevState[id_pedido] || false
+        }));
+        toggleTabla();
+    };
+
+    const closeDiv1 = (id_pedido) => {
+        setShowDiv(prevState => ({
+            ...prevState,
+            [id_pedido]: false
+        }));
+    };
+
+    const toggleTabla = () => {
+        setShowDiv1(!showDiv1);
     };
 
     useEffect(() => {
@@ -70,12 +96,18 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
     });
 
     return (
-        <section class="fixed top-40 left-1 w-full h-full flex flex-col items-center">
+
+        <section class="absolute top-40 left-1 w-full h-full flex flex-col items-center">
             <div class="max-w-[50%] w-[90%] bg-white p-1  flex flex-col shadow-[4px_10px_60px_800px_rgba(0,0,0,0.3)] rounded-xl" >
                 <div>
                     <h2 class="text-xl font-semibold text-navy">Pedido para: {editedItem.nombre_cliente}</h2>
+                    <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl" onClick={() => toggleDiv1(id_pedido)}>Agregar mas</button>
+                    <div>
+                        {showDiv[id_pedido] && <AgregarD id_pedido={id_pedido}></AgregarD>}
+                        
+                    </div>
                 </div>
-                <div class="rounded-2xl overflow-x-auto overflow-y-auto ">
+                {showDiv1 && <div class="rounded-2xl overflow-x-auto overflow-y-auto ">
                     <table class="table-auto border-collapse border border-grotto self-center w-full ">
                         <thead>
                             <tr class="border-none bg-royal text-white">
@@ -89,7 +121,9 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
                             {tableRows}
                         </tbody>
                     </table>
-                </div>
+
+                </div>}
+
             </div>
         </section>
 

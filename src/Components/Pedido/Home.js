@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { EditarV } from "./EditarV";
 import { FaX } from "react-icons/fa6";
 import { DetalleP } from "../Detalle/DetalleP";
+import { FaPlus } from "react-icons/fa6";
+import { useMediaQuery } from 'react-responsive';
 
 
 export function Home(props) {
@@ -89,11 +91,24 @@ export function Home(props) {
 
         // Formatear la fecha en el formato deseado (YYYY-MM-DD)
         const fechaFormateada = `${año}-${mes}-${día}`;
+        const estado = item.estado;
+
+        const backgroundColor =
+            estado === 'Listo'
+                ? '#61934D' // Estilo para estado "listo"
+                : estado === 'Pendiente'
+                    ? '#E9BF54' // Estilo para estado "pendiente"
+                    : estado === 'Sin inventario'
+                        ? '#BD6849' // Estilo para estado "sin inventario"
+                        : ''; // Valor por defecto si el estado no coincide con ninguno de los casos anteriores
 
 
         return (
             <>
                 <tr key={pedidoId} class="even:bg-grotto odd:bg-baby">
+
+                    <td style={{ backgroundColor }}>   </td>
+
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_cliente}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{tipoFactura}</td>
@@ -120,7 +135,14 @@ export function Home(props) {
         );
     });
 
+    //funcion para el cambio del boton
+    const isMobile = useMediaQuery({ maxWidth: 768 }); // Define aquí el ancho máximo para considerar como móvil
 
+    const buttonContent = isMobile ? (
+        <FaPlus size={24} /> // Mostrar solo el icono en dispositivos móviles
+    ) : (
+        'Nuevo Pedido' // Mostrar el texto en dispositivos de pantalla grande
+    );
 
     return (
         <><Nav /><section class="flex flex-row w-full h-full">
@@ -129,8 +151,7 @@ export function Home(props) {
             </div>
             <section class="flex flex-col w-9/12 ml-14 ">
                 <div class="m-5 p-5 ">
-                    <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/Ventas')}>Nuevo Pedido</button>
-
+           <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/Ventas')}>{buttonContent}</button>
                 </div>
                 {Object.keys(showDivMap).map(itemId => (
                     showDivMap[itemId] && (
@@ -154,6 +175,8 @@ export function Home(props) {
 
                         <thead>
                             <tr class="border-none bg-royal text-white">
+                            <th class="p-2 py-4 border border-mid tracking-wider"> </th>
+
                                 <th class="p-2 py-4 border border-mid tracking-wider">Vendendor</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Cliente</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Factura</th>

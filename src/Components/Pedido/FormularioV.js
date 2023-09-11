@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
 import { FormularioD } from "../Detalle/FormularioD";
+import React, { useState } from "react";
 
 export function FormularioV() {
     //api/pedido/create
@@ -70,6 +71,8 @@ export function FormularioV() {
                 console.log("ID ID ID:", pedidoId)
                 toggleDiv();
                 toggleDiv1() 
+                console.log(data);
+
             } else {
                 // Manejar errores de la API
                 console.error("Error al enviar los datos del pedido a la API");
@@ -78,9 +81,6 @@ export function FormularioV() {
             console.error("Error en la solicitud POST:", error);
         }
     };
-
-   
-
 
     return (
 
@@ -164,3 +164,4 @@ export function FormularioV() {
     )
 }
 /**/
+
