@@ -74,7 +74,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
     }, [editedItem]);
 
     return (
-        <section class="fixed top-40 left-1 w-full h-full flex flex-col items-center">
+        <section class="absolute top-40 left-1 w-full h-full flex flex-col items-center">
             <ToastContainer />
             <div class="min-w-[35%] bg-white p-1  flex flex-col shadow-[4px_10px_60px_800px_rgba(0,0,0,0.3)] rounded-xl" >
                 <form onSubmit={submitFormEdit} class="grid">
@@ -158,6 +158,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                             <option value=""></option>
                             <option value="Pendiente">Pendiente</option>
                             <option value="Listo">Listo</option>
+                            <option value="Sin inventario">Sin inventario</option>
                         </select>
                     </div>
 
