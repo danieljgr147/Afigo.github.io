@@ -75,8 +75,9 @@ export function FormularioU() {
                         <select class="border border-navy w-1/2"
                         value={usuario.usuario_admin}
                         onChange={(e) => setUsuario({ ...usuario, usuario_admin: e.target.value })}>
-                            <option value={0} class="border border-navy w-1/2">No</option>
-                            <option value={1} class="border border-navy w-1/2">Si</option>
+                            <option value="2" class="border border-navy w-1/2">  </option>
+                            <option value="0" class="border border-navy w-1/2">No</option>
+                            <option value="1" class="border border-navy w-1/2">Si</option>
                         </select>
 
                     </div>
