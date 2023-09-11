@@ -1,7 +1,7 @@
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { FormularioD } from "../Detalle/FormularioD";
 import React, { useState } from "react";
 
@@ -9,7 +9,7 @@ export function FormularioV() {
     //api/pedido/create
     //api/detalle/create
     //api/detalle/byPedido
-    
+     
     const ID = sessionStorage.getItem('id_usuario')
     console.log("*ID *")
     console.log( ID )
