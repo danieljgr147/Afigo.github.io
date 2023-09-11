@@ -158,6 +158,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                             <option value=""></option>
                             <option value="Pendiente">Pendiente</option>
                             <option value="Listo">Listo</option>
+                            <option value="Sin inventario">Sin inventario</option>
                         </select>
                     </div>
 
