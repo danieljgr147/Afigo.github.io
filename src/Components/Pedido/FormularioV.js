@@ -9,7 +9,6 @@ export function FormularioV() {
     //api/pedido/create
     //api/detalle/create
     //api/detalle/byPedido
-     
     const ID = sessionStorage.getItem('id_usuario')
     console.log("*ID *")
     console.log( ID )

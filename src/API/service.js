@@ -16,6 +16,7 @@ export const Auth = async (usuario, contrasenna) => {
 
     if (dataToken.token != undefined) {
         sessionStorage.setItem('id_usuario', dataToken.id_Usuario);
+        sessionStorage.setItem('usuario_admin', dataToken.usuario[0].usuario_admin);
         sessionStorage.setItem('Token', 'Bearer ' + dataToken.token);
         return "Auntenticado"
     } else {

@@ -9,6 +9,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 
 
 export function Sidebar(){
+  const userType = sessionStorage.getItem('usuario_admin')
   const menus = [
     { name: "Pedidos", link: "/Inicio", icon: AiOutlineShoppingCart },
     { name: "Cotizaciones", link: "/Cotizacion", icon: AiOutlineForm },
@@ -30,34 +31,41 @@ export function Sidebar(){
           />
         </div>
         <div className="mt-4 flex flex-col gap-4 relative">
-          {menus?.map((menu, i) => (
-            <Link
-              to={menu?.link}
-              key={i}
-              className={` ${
-                menu?.margin && "mt-5"
-              } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md text-white`}
-            >
-              <div>{React.createElement(menu?.icon, { size: "20" })}</div>
-              <h2
-                style={{
-                  transitionDelay: `${i + 3}00ms`,
-                }}
-                className={`whitespace-pre duration-500 ${
-                  !open && "opacity-0 translate-x-28 overflow-hidden"
-                }`}
+        {menus?.map((menu, i) => {
+            // Condición para renderizar el enlace solo si el userType es 1
+            if (menu.name === "Usuarios" && userType == 0) {
+              return null; // No renderizar el enlace
+            }
+
+            return (
+              <Link
+                to={menu?.link}
+                key={i}
+                className={` ${
+                  menu?.margin && "mt-5"
+                } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md text-white`}
               >
-                {menu?.name}
-              </h2>
-              <h2
-                className={`${
-                  open && "hidden"
-                } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden `}
-              >
-                {menu?.name}
-              </h2>
-            </Link>
-          ))}
+                <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+                <h2
+                  style={{
+                    transitionDelay: `${i + 3}00ms`,
+                  }}
+                  className={`whitespace-pre duration-500 ${
+                    !open && "opacity-0 translate-x-28 overflow-hidden"
+                  }`}
+                >
+                  {menu?.name}
+                </h2>
+                <h2
+                  className={`${
+                    open && "hidden"
+                  } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden `}
+                >
+                  {menu?.name}
+                </h2>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

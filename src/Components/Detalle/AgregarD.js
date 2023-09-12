@@ -98,7 +98,7 @@ export function AgregarD({id_pedido}){
 
     return (
         <section class="flex flex-col w-full justify-center items-center">
-            <form class="flex flex-col w-1/2 justify-center items-center pt-10" >
+            <form class="flex flex-col w-1/2 justify-center items-center " >
                 <div class="pt-2 text-center">
                     <h1 class="text-4xl font-bold text-royal pb-2">Agregar productos</h1>
                 </div>
@@ -141,8 +141,9 @@ export function AgregarD({id_pedido}){
                 </div>
                 <button onClick={enviarDatosDetalle} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Agregar</button>
             </form>
-            <div class="mb-4">
+            <div class="mb-4 w-[90%]" >
                 <h2 class="text-xl font-bold text-royal pb-2">Nuevos productos agregados</h2>
+                <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4"> 
                 <table class="table-auto border-collapse border border-grotto self-center w-full">
                     <thead>
                         <tr class="border-none bg-royal text-white">
@@ -152,9 +153,11 @@ export function AgregarD({id_pedido}){
                         </tr>
                     </thead>
                     <tbody>
-                        {tableRows}
+                        {tableRows} 
                     </tbody>
                 </table>
+                </div>
+                
             </div>
 
 
