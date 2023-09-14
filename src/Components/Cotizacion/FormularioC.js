@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
 import { FormularioD } from "../Detalle/FormularioD";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export function FormularioC() {
     const navigate = useNavigate()
@@ -63,7 +66,12 @@ export function FormularioC() {
                 setPedidoId(idPedido);
                 console.log("ID ID ID:", pedidoId)
                 toggleDiv();
-                toggleDiv1() 
+                toggleDiv1()
+                toast.success('Cotizacion creada con éxito', {
+                    position: 'top-right',
+                    autoClose: 3000, // Duración en milisegundos
+                    hideProgressBar: false,
+                });
             } else {
                 // Manejar errores de la API
                 console.error("Error al enviar los datos del pedido a la API");
@@ -75,38 +83,48 @@ export function FormularioC() {
 
 
     return (
-        <><Nav /><section class="flex flex-col w-full justify-center items-center">
-            <div class="self-start ml-20 mt-10">
-                <button onClick={() => navigate('/Cotizacion')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
-            </div>
-            <div class="pt-8 flex justify-center text-center">
-                <h1 class="text-4xl font-bold text-royal">Formulario de cotizaciones</h1>
-            </div>
-            <div class="flex flex-col w-1/2 justify-center items-center pt-20">
-
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Nombre del cliente</label>
-                    <input class="border border-navy w-1/2"
-                        value={pedido.nombre_cliente}
-                        onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
+        <><Nav />
+            <section class="flex flex-col w-full justify-center items-center">
+                <ToastContainer />
+                <div class="self-start ml-20 mt-10">
+                    <button onClick={() => navigate('/Cotizacion')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
                 </div>
+                <div class="flex flex-col w-[90%] justify-center items-center shadow-lg rounded-2xl">
+                    <div  class="pt-8 pb-8 bg-royal w-full rounded-t-2xl text-center">
+                        <h1 class="text-4xl font-bold text-white">Formulario de cotizaciones</h1>
+                    </div>
+                    <div class="flex flex-col w-1/2 justify-center items-center pt-4 w-full">
+
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Nombre del cliente</label>
+                            <input class="border border-navy w-[100%] p-1"
+                                value={pedido.nombre_cliente}
+                                onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
+                        </div>
 
 
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Informacion del cliente</label>
-                    <input class="border border-navy w-1/2"
-                        value={pedido.detalle_factura}
-                        onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
-                </div>
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Informacion del cliente</label>
+                            <input class="border border-navy w-[100%] p-1"
+                                value={pedido.detalle_factura}
+                                onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
+                        </div>
 
-               {showDiv1 && <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>} 
-            </div>
-        </section>
-            {showDiv && <FormularioD idPedido={pedidoId} />}
+                        {showDiv1 && <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>}
 
-            <div class="flex flex-col items-center justify-center mt-2 mb-4">
+
+                    </div>
+                    {showDiv && <FormularioD idPedido={pedidoId} />}
+
+                    <div class="flex flex-col items-center justify-center mt-2 mb-4">
                 <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Cotizacion')}>Listo</button>
             </div>
+                </div>
+
+            </section>
+
+
+            
         </>
     )
 }

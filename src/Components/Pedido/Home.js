@@ -143,7 +143,7 @@ export function Home(props) {
     ) : (
         'Nuevo Pedido' // Mostrar el texto en dispositivos de pantalla grande
     );
-
+    
     return (
         <><Nav /><section class="flex flex-row w-full h-full">
             <div class="h-full">

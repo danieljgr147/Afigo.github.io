@@ -1,9 +1,12 @@
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
-import {  useEffect } from 'react';
+import { useEffect } from 'react';
 import { FormularioD } from "../Detalle/FormularioD";
 import React, { useState } from "react";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export function FormularioV() {
     //api/pedido/create
@@ -11,18 +14,18 @@ export function FormularioV() {
     //api/detalle/byPedido
     const ID = sessionStorage.getItem('id_usuario')
     console.log("*ID *")
-    console.log( ID )
+    console.log(ID)
     const navigate = useNavigate()
     const pedidos = [];
     const [pedidoId, setPedidoId] = useState(null);
     const [showDiv, setShowDiv] = useState(false);
-        const [showDiv1, setShowDiv1] = useState(true);
+    const [showDiv1, setShowDiv1] = useState(true);
 
     const toggleDiv = () => {
         setShowDiv(!showDiv);
     };
 
-      const toggleDiv1 = () => {
+    const toggleDiv1 = () => {
         setShowDiv1(!showDiv1);
     };
 
@@ -69,8 +72,13 @@ export function FormularioV() {
                 setPedidoId(idPedido);
                 console.log("ID ID ID:", pedidoId)
                 toggleDiv();
-                toggleDiv1() 
+                toggleDiv1()
                 console.log(data);
+                toast.success('Pedido creado con éxito', {
+                    position: 'top-right',
+                    autoClose: 3000, // Duración en milisegundos
+                    hideProgressBar: false,
+                });
 
             } else {
                 // Manejar errores de la API
@@ -85,79 +93,84 @@ export function FormularioV() {
 
         <><Nav />
             <section class="flex flex-col w-full justify-center items-center">
+                <ToastContainer />
                 <div class="self-start ml-20 mt-10">
                     <button onClick={() => navigate('/Inicio')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
 
                 </div>
-                <div class="pt-8 ">
-                    <h1 class="text-4xl font-bold text-royal">Formulario de ventas</h1>
-                </div>
-                <div class="flex flex-col w-1/2 justify-center items-center pt-20">
-
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Nombre del cliente</label>
-                        <input class="border border-navy w-1/2"
-                            value={pedido.nombre_cliente}
-                            onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
+                <div class="flex flex-col w-[90%] justify-center items-center shadow-lg rounded-2xl">
+                    <div class="pt-8 pb-8 bg-royal w-full rounded-t-2xl text-center">
+                        <h1 class="text-4xl font-bold text-white">Formulario de Ventas</h1>
                     </div>
+                    <div class="flex flex-col w-1/2 justify-center items-center pt-4 w-full">
 
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Tipo de factura</label>
-                        <select class="border border-navy w-1/2"
-                            value={pedido.factura_electronica}
-                            onChange={(e) => setPedido({ ...pedido, factura_electronica: e.target.value })}>
-                            <option value={2}></option>
-                            <option value={0}>Factura electronica</option>
-                            <option value={1}>Factura fisica</option>
-                        </select>
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Nombre del cliente</label>
+                            <input class="border border-navy w-[100%] p-1"
+                                value={pedido.nombre_cliente}
+                                onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
+                        </div>
+
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Tipo de factura</label>
+                            <select class="border border-navy w-[100%] p-1"
+                                value={pedido.factura_electronica}
+                                onChange={(e) => setPedido({ ...pedido, factura_electronica: e.target.value })}>
+                                <option value={2}></option>
+                                <option value={0}>Factura electronica</option>
+                                <option value={1}>Factura fisica</option>
+                            </select>
+                        </div>
+
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Informacion para factura</label>
+                            <input class="border border-navy w-[100%] p-1"
+                                value={pedido.detalle_factura}
+                                onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
+                        </div>
+
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Metodo de envio</label>
+                            <select class="border border-navy w-[100%] p-1"
+                                value={pedido.metodo_envio}
+                                onChange={(e) => setPedido({ ...pedido, metodo_envio: e.target.value })}>
+                                <option value=""></option>
+                                <option value="Express">Express</option>
+                                <option value="Encomienda">Encomienda</option>
+                            </select>
+                        </div>
+
+
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Direccion</label>
+                            <input class="border border-navy w-[100%] p-1"
+                                value={pedido.direccion_envio}
+                                onChange={(e) => setPedido({ ...pedido, direccion_envio: e.target.value })}></input>
+                        </div>
+
+
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Urgencia</label>
+                            <select class="border border-navy w-[100%] p-1" value={pedido.urgencia}
+                                onChange={(e) => setPedido({ ...pedido, urgencia: e.target.value })}>
+                                <option value=""></option>
+                                <option value="Leve">Leve</option>
+                                <option value="Moderado">Moderado</option>
+                                <option value="Urgente">Urgente</option>
+                            </select>
+                        </div>
+
+                        {showDiv1 && <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>}
                     </div>
-
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Informacion para factura</label>
-                        <input class="border border-navy w-1/2"
-                            value={pedido.detalle_factura}
-                            onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
-                    </div>
-
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Metodo de envio</label>
-                        <select class="border border-navy w-1/2"
-                            value={pedido.metodo_envio}
-                            onChange={(e) => setPedido({ ...pedido, metodo_envio: e.target.value })}>
-                            <option value=""></option>
-                            <option value="Express">Express</option>
-                            <option value="Encomienda">Encomienda</option>
-                        </select>
-                    </div>
-
-
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Direccion</label>
-                        <input class="border border-navy w-1/2"
-                            value={pedido.direccion_envio}
-                            onChange={(e) => setPedido({ ...pedido, direccion_envio: e.target.value })}></input>
-                    </div>
-
-
-                    <div class="flex flex-col m-4 w-full justify-center items-center">
-                        <label class="font-semibold">Urgencia</label>
-                        <select class="border border-navy w-1/2" value={pedido.urgencia}
-                            onChange={(e) => setPedido({ ...pedido, urgencia: e.target.value })}>
-                            <option value=""></option>
-                            <option value="Leve">Leve</option>
-                            <option value="Moderado">Moderado</option>
-                            <option value="Urgente">Urgente</option>
-                        </select>
-                    </div>
-
-                   {showDiv1 &&  <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>}
-                </div>
-            </section>
-            {showDiv && <><FormularioD idPedido={pedidoId} /><div class="flex flex-col items-center justify-center mt-2 mb-4">
+                    {showDiv && <><FormularioD idPedido={pedidoId} /><div class="flex flex-col items-center justify-center mt-2 mb-4">
                 <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Inicio')}>Listo</button>
             </div></>}
 
-            
+                </div>
+
+            </section>
+           
+
         </>
 
     )

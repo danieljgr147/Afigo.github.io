@@ -9,7 +9,7 @@ export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
     const IDusuario = sessionStorage.getItem('id_usuario')
     const [editedItem, setEditedItem] = useState(item);
 
-    const onChange = (e) => {
+    const onChange = (e) => { 
         setEditedItem({
             ...editedItem,
             [e.target.name]: e.target.value

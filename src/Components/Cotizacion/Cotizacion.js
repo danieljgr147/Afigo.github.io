@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { EditarC } from "./EditarC";
 import { FaX } from "react-icons/fa6";
 import { DetalleP } from "../Detalle/DetalleP";
+import { FaPlus } from "react-icons/fa6";
+import { useMediaQuery } from 'react-responsive';
 
 export function Cotizacion(props) {
     const [cotizacion, setCotizacion] = useState([]);
@@ -110,6 +112,15 @@ export function Cotizacion(props) {
         );
     });
 
+     //funcion para el cambio del boton
+     const isMobile = useMediaQuery({ maxWidth: 768 }); // Define aquí el ancho máximo para considerar como móvil
+
+     const buttonContent = isMobile ? (
+         <FaPlus size={24} /> // Mostrar solo el icono en dispositivos móviles
+     ) : (
+         'Nueva Cotizacion' // Mostrar el texto en dispositivos de pantalla grande
+     );
+
 
     return (
         <><Nav /><section class="flex flex-row w-full">
@@ -118,7 +129,7 @@ export function Cotizacion(props) {
             </div>
             <section class="alex flex-col w-9/12 ml-14">
                 <div class="m-5 p-5 ">
-                    <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/formularioCotizacion')}>Nueva Cotizacion</button>
+                <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/NuevaCotizacion')}>{buttonContent}</button>
                 </div>
                 {Object.keys(showDivMap).map(itemId => (
                     showDivMap[itemId] && (

@@ -2,6 +2,9 @@ import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export function FormularioU() {
     const navigate = useNavigate()
@@ -35,6 +38,11 @@ export function FormularioU() {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data);
+                toast.success('Usuario creado con éxito', {
+                    position: 'top-right',
+                    autoClose: 3000, // Duración en milisegundos
+                    hideProgressBar: false,
+                });
             } else {
                 // Manejar errores de la API
                 console.error("Error al enviar los datos a la API");
@@ -47,6 +55,7 @@ export function FormularioU() {
     return (
         <>
             <Nav />
+            <ToastContainer/>
             <section class="flex flex-col w-full justify-center items-center">
                 <div class="self-start ml-20 mt-10">
                     <button onClick={() => navigate('/Usuarios')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>

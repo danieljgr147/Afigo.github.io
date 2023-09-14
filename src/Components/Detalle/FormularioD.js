@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export function FormularioD({ idPedido }) {
 
@@ -20,7 +22,7 @@ export function FormularioD({ idPedido }) {
     const enviarDatosDetalle = async (e) => {
         e.preventDefault();
         // Crear una nueva copia del array detalle con valores limpios
-        
+
         console.log("*****")
         console.log(detalle.cant_producto)
         try {
@@ -47,6 +49,11 @@ export function FormularioD({ idPedido }) {
                 console.log(data);
                 setDetalle(initialState)
                 fetchDetalle();
+                toast.success('Producto agregado con éxito', {
+                    position: 'top-right',
+                    autoClose: 3000, // Duración en milisegundos
+                    hideProgressBar: false,
+                });
             } else {
                 // Manejar errores de la API
                 console.error("Error al enviar los datos del pedido a la API");
@@ -101,8 +108,9 @@ export function FormularioD({ idPedido }) {
 
     return (
         <section class="flex flex-col w-full justify-center items-center">
-            <form class="flex flex-col w-1/2 justify-center items-center pt-10" >
-                <div class="pt-8 text-center">
+            <ToastContainer />
+            <form class="flex flex-col w-[100%] justify-center items-center pt-10" >
+                <div class="pt-8 text-center pb-8">
                     <h1 class="text-4xl font-bold text-royal pb-2">Agregar productos</h1>
                 </div>
                 <input
@@ -115,7 +123,7 @@ export function FormularioD({ idPedido }) {
                 </input>
                 <div class="flex flex-col m-4 w-full justify-center items-center">
                     <label class="font-semibold">Producto</label>
-                    <input class="border border-navy w-1/2"
+                    <input class="border border-navy w-[90%] p-1"
                         type="text"
                         name="nombre_producto"
                         id="nombre_producto"
@@ -125,7 +133,7 @@ export function FormularioD({ idPedido }) {
                 </div>
                 <div class="flex flex-col m-4 w-full justify-center items-center">
                     <label class="font-semibold">Cantidad</label>
-                    <input class="border border-navy w-1/2"
+                    <input class="border border-navy w-[90%] p-1"
                         name="cant_producto"
                         id="cant_producto"
                         value={detalle.cant_producto}
@@ -134,7 +142,7 @@ export function FormularioD({ idPedido }) {
                 </div>
                 <div class="flex flex-col m-4 w-full justify-center items-center">
                     <label class="font-semibold">Descripcion</label>
-                    <input class="border border-navy w-1/2"
+                    <input class="border border-navy w-[90%] p-1"
                         type="text"
                         name="descripcion"
                         id="descripcion"
@@ -144,8 +152,8 @@ export function FormularioD({ idPedido }) {
                 </div>
                 <button onClick={enviarDatosDetalle} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Agregar</button>
             </form>
-            <div>
-                <table class="table-auto border-collapse border border-grotto self-center w-full">
+            <div class="w-full flex justify-center">
+                <table class="table-auto border-collapse border border-grotto self-center w-[90%]">
                     <thead>
                         <tr class="border-none bg-royal text-white">
                             <th class="p-2 py-4 border border-mid tracking-wider text-center">Producto</th>

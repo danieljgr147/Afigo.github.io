@@ -4,7 +4,7 @@ import { Home } from "./Components/Pedido/Home";
 import { FormularioV } from "./Components/Pedido/FormularioV"
 import { Nav } from "./Components/Nav";
 import { Cotizacion } from "./Components/Cotizacion/Cotizacion";
-import { FormularioC } from "./Components/Cotizacion/FormulacioC";
+import { FormularioC } from "./Components/Cotizacion/FormularioC";
 import { Usuarios } from "./Components/mat_usuarios/Usuarios";
 import { FormularioU } from "./Components/mat_usuarios/FormularioU";
 import { DetalleP } from "./Components/Detalle/DetalleP";
@@ -25,6 +25,7 @@ function App() {
         <Route path="/formularioCotizacion" element={<FormularioC/>}></Route>
         <Route path="/NuevoUsuario" element={<FormularioU/>}></Route>
         <Route path="/det" element={<DetalleP/>}></Route>
+        <Route path="/NuevaCotizacion" element={<FormularioC></FormularioC>}></Route>
       </Routes>    
     </>
   );
