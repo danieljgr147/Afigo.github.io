@@ -25,7 +25,6 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
             const params = {
                 id_pedido: ID,
                 estado: e.target.estado.value,
-                id_usuario: parseInt(IDusuario),
                 nombre_cliente: e.target.nombre_cliente.value,
                 factura_electronica: parseInt(e.target.factura_electronica.value),
                 detalle_factura: e.target.detalle_factura.value,
@@ -54,6 +53,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                     autoClose: 3000, // Duración en milisegundos
                     hideProgressBar: false,
                 });
+                
             } else {
                 // Manejar errores de la API
                 console.error("Error al enviar los datos del pedido a la API");
@@ -171,7 +171,7 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                             onChange={onChange}>
                             <option value=""></option>
                             <option value="Leve">Leve</option>
-                            <option value="Moderado">Moderado</option>
+                            <option value="Moderado">Moderado</option> 
                             <option value="Urgente">Urgente</option>
                         </select>
                     </div>

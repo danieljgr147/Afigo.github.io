@@ -39,7 +39,8 @@ export function FormularioV() {
         metodo_envio: "",
         direccion_envio: "",
         urgencia: "",
-        tipo_pedido: ""
+        tipo_pedido: "",
+        sucursal: ""
     }]);
 
     const enviarDatosPedido = async () => {
@@ -53,7 +54,8 @@ export function FormularioV() {
                 metodo_envio: pedido.metodo_envio,
                 direccion_envio: pedido.direccion_envio,
                 urgencia: pedido.urgencia,
-                tipo_pedido: "Pedido"
+                tipo_pedido: "Pedido",
+                sucursal: pedido.sucursal
             };
             const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
                 method: 'POST',
@@ -160,6 +162,17 @@ export function FormularioV() {
                             </select>
                         </div>
 
+                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
+                            <label class="font-semibold">Sucursal</label>
+                            <select class="border border-navy w-[100%] p-1" value={pedido.sucursal}
+                                onChange={(e) => setPedido({ ...pedido, sucursal: e.target.value })}>
+                                <option value=""></option>
+                                <option value="Palmares">Palmares</option>
+                                <option value="Sarchí">Sarchí</option>
+                                <option value="Nicoya">Nicoya</option>
+                            </select>
+                        </div>
+
                         {showDiv1 && <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>}
                     </div>
                     {showDiv && <><FormularioD idPedido={pedidoId} /><div class="flex flex-col items-center justify-center mt-2 mb-4">
@@ -170,7 +183,7 @@ export function FormularioV() {
 
             </section>
            
-
+ 
         </>
 
     )

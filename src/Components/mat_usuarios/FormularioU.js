@@ -14,7 +14,8 @@ export function FormularioU() {
         direccion: "",
         usuario_admin: 0,
         nombre_de_usuario: "",
-        contrasenia: ""
+        contrasenia: "",
+        sucursal: ""
     }]);
 
     const enviarDatos = async () => {
@@ -24,7 +25,8 @@ export function FormularioU() {
                 direccion: usuario.direccion,
                 usuario_admin: parseInt(usuario.usuario_admin),
                 nombre_de_usuario: usuario.nombre_de_usuario,
-                contrasenia: usuario.contrasenia
+                contrasenia: usuario.contrasenia,
+                sucursal: usuario.sucursal
             }
             const response = await fetch("https://AfigoControl.somee.com/API/api/user/create", {
                 method: 'POST',
@@ -32,7 +34,7 @@ export function FormularioU() {
                 headers: {
                     'Content-Type': "application/json; charset=utf-8",
                     "Authorization": sessionStorage.getItem('Token')
-                }  
+                }
             });
 
             if (response.ok) {
@@ -55,7 +57,7 @@ export function FormularioU() {
     return (
         <>
             <Nav />
-            <ToastContainer/>
+            <ToastContainer />
             <section class="flex flex-col w-full justify-center items-center">
                 <div class="self-start ml-20 mt-10">
                     <button onClick={() => navigate('/Usuarios')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
@@ -68,22 +70,22 @@ export function FormularioU() {
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Nombre</label>
                         <input class="border border-navy w-1/2"
-                         value={usuario.nombre}
-                         onChange={(e) => setUsuario({ ...usuario, nombre: e.target.value })}></input>
+                            value={usuario.nombre}
+                            onChange={(e) => setUsuario({ ...usuario, nombre: e.target.value })}></input>
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Direccion</label>
                         <input class="border border-navy w-1/2"
-                        value={usuario.direccion}
-                        onChange={(e) => setUsuario({ ...usuario, direccion: e.target.value })}></input>
+                            value={usuario.direccion}
+                            onChange={(e) => setUsuario({ ...usuario, direccion: e.target.value })}></input>
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Administrador</label>
                         <select class="border border-navy w-1/2"
-                        value={usuario.usuario_admin}
-                        onChange={(e) => setUsuario({ ...usuario, usuario_admin: e.target.value })}>
+                            value={usuario.usuario_admin}
+                            onChange={(e) => setUsuario({ ...usuario, usuario_admin: e.target.value })}>
                             <option value="2" class="border border-navy w-1/2">  </option>
                             <option value="0" class="border border-navy w-1/2">No</option>
                             <option value="1" class="border border-navy w-1/2">Si</option>
@@ -94,16 +96,29 @@ export function FormularioU() {
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Nombre de usuario</label>
                         <input class="border border-navy w-1/2"
-                        value={usuario.nombre_de_usuario}
-                        onChange={(e) => setUsuario({ ...usuario, nombre_de_usuario: e.target.value })}></input>
+                            value={usuario.nombre_de_usuario}
+                            onChange={(e) => setUsuario({ ...usuario, nombre_de_usuario: e.target.value })}></input>
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center">
                         <label class="font-semibold">Contraseña</label>
                         <input class="border border-navy w-1/2"
-                        value={usuario.contrasenia}
-                        onChange={(e) => setUsuario({ ...usuario, contrasenia: e.target.value })}></input>
+                            value={usuario.contrasenia}
+                            onChange={(e) => setUsuario({ ...usuario, contrasenia: e.target.value })}></input>
                     </div>
+
+                    <div class="flex flex-col m-4 w-full justify-center items-center">
+                        <label class="font-semibold">Sucursal</label>
+                        <select class="border border-navy w-1/2"
+                            value={usuario.sucursal}
+                            onChange={(e) => setUsuario({ ...usuario, sucursal: e.target.value })}>
+                            <option value="" class="border border-navy w-1/2">  </option>
+                            <option value="Palmares">Palmares</option>
+                            <option value="Sarchí">Sarchí</option>
+                            <option value="Nicoya">Nicoya</option>
+                        </select>
+
+                    </div> 
 
                     <button onClick={enviarDatos} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
 

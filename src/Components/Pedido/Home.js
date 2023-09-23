@@ -16,7 +16,13 @@ export function Home(props) {
     const [showDivMap1, setShowDivMap1] = useState({});
     const [showDiv, setShowDiv] = useState(false);
 
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    };
+
     const toggleDiv = (pedidoId) => {
+        scrollToTop();
         setShowDivMap(prevState => ({
             ...prevState,
             [pedidoId]: !prevState[pedidoId] || false
@@ -29,9 +35,8 @@ export function Home(props) {
         }));
     };
 
-
-
     const closeDiv = (pedidoId) => {
+        window.location.reload();
         setShowDivMap(prevState => ({
             ...prevState,
             [pedidoId]: false
@@ -108,7 +113,6 @@ export function Home(props) {
                 <tr key={pedidoId} class="even:bg-grotto odd:bg-baby">
 
                     <td style={{ backgroundColor }}>   </td>
-
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_cliente}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{tipoFactura}</td>
@@ -143,7 +147,7 @@ export function Home(props) {
     ) : (
         'Nuevo Pedido' // Mostrar el texto en dispositivos de pantalla grande
     );
-    
+
     return (
         <><Nav /><section class="flex flex-row w-full h-full">
             <div class="h-full">
@@ -171,12 +175,11 @@ export function Home(props) {
 
                 <div class="flex content-center items-center overflow-x-auto overflow-y-auto  shadow-xl sm:rounded-t-xl ml-4">
 
-                    <table class="table-auto border-collapse border border-grotto self-center w-full">
+                    <table class="table-auto border-collapse border border-grotto self-center w-[100%]">
 
                         <thead>
                             <tr class="border-none bg-royal text-white">
-                            <th class="p-2 py-4 border border-mid tracking-wider"> </th>
-
+                                <th class="p-2 py-4 border border-mid tracking-wider"> </th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Vendendor</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Cliente</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Factura</th>
@@ -189,7 +192,7 @@ export function Home(props) {
                                 <th class="p-2 py-4 border border-mid tracking-wider">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody> 
                             {tableRows}
                         </tbody>
 

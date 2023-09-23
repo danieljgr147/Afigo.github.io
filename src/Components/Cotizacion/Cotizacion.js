@@ -15,7 +15,12 @@ export function Cotizacion(props) {
     const [showDivMap1, setShowDivMap1] = useState({});
     const [showDiv, setShowDiv] = useState(false);
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    };
+
     const toggleDiv = (pedidoId) => {
+        scrollToTop();
         setShowDivMap(prevState => ({
             ...prevState,
             [pedidoId]: !prevState[pedidoId] || false
@@ -89,9 +94,21 @@ export function Cotizacion(props) {
         console.log(item.id_pedido)
         console.log(fechaFormateada);
 
+        const estado = item.estado;
+        const backgroundColor =
+            estado === 'Listo'
+                ? '#61934D' // Estilo para estado "listo"
+                : estado === 'Pendiente'
+                    ? '#E9BF54' // Estilo para estado "pendiente"
+                    : estado === 'Sin inventario'
+                        ? '#BD6849' // Estilo para estado "sin inventario"
+                        : ''; // Valor por defecto si el estado no coincide con ninguno de los casos anteriores
+
         return (
             <>
                 <tr key={pedidoId} class="even:bg-grotto odd:bg-baby">
+
+                    <td style={{ backgroundColor }}>   </td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaFormateada}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_cliente}</td>
@@ -152,6 +169,7 @@ export function Cotizacion(props) {
 
                         <thead>
                             <tr class="border-none bg-royal text-white">
+                                <th class="p-2 py-4 border border-mid w-[0.2%]"> </th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Fecha</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Vendendor</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Cliente</th>

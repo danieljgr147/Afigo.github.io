@@ -23,7 +23,7 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
             nombre: e.target.nombre.value,
             usuario_admin: parseInt(e.target.usuario_admin.value),
             nombre_de_usuario: e.target.nombre_de_usuario.value,
-            contrasenia: e.target.contrasenia.value
+            contrasenia: e.target.contrasenia.value,
         };
 
         await Update(params)
@@ -39,8 +39,8 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
 
     useEffect(() => {
         if (editedItem) {
-            const { user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia } = editedItem;
-            setEditedItem({ user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia });
+            const { user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia  } = editedItem;
+            setEditedItem({ user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia  });
         }
     }, [editedItem]);
 
@@ -111,7 +111,6 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
                             value={editedItem.contrasenia === null ? "" : editedItem.contrasenia}
                         />
                         <button type='submit' class="bg-navy text-white font-semibold mt-4 p-1 w-2/5 rounded-xl">Agregar</button>
-
                     </div>
 
                 </form>
