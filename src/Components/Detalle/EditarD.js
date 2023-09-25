@@ -28,7 +28,8 @@ export function EditarD({ item, id_pedido, IdDetalle }) {
                 id_pedido:ID,
                 nombre_producto: e.target.nombre_producto.value,
                 cant_producto: parseInt(e.target.cant_producto.value),
-                descripcion: e.target.descripcion.value
+                descripcion: e.target.descripcion.value,
+                estado: e.target.estado.value
             };
             console.log(params);
 
@@ -64,8 +65,8 @@ export function EditarD({ item, id_pedido, IdDetalle }) {
 
     useEffect(() => {
         if (editedItem) {
-            const { id_detalle, id_pedido, nombre_producto, cant_producto, descripcion } = editedItem;
-            setEditedItem({ id_detalle, id_pedido, nombre_producto, cant_producto, descripcion });
+            const { id_detalle, id_pedido, nombre_producto, cant_producto, descripcion, estado } = editedItem;
+            setEditedItem({ id_detalle, id_pedido, nombre_producto, cant_producto, descripcion, estado });
         }
     }, [editedItem]);
 
@@ -115,6 +116,19 @@ export function EditarD({ item, id_pedido, IdDetalle }) {
                             id="descripcion"
                             value={editedItem.descripcion === null ? "" : editedItem.descripcion}
                             onChange={onChange}></input>
+                    </div>
+
+                    <div class="flex flex-col m-4 w-full justify-center items-center justify-self-center">
+                        <label class="font-semibold">Estado</label>
+                        <select class="border border-navy w-1/2"
+                            name="estado"
+                            id="estado"
+                            value={editedItem.estado === null ? "" : editedItem.estado}
+                            onChange={onChange}>
+                            <option value={" "}></option>
+                            <option value={"En inventario"}>En inventario</option>
+                            <option value={"Sin inventario"}>Sin inventario</option>
+                        </select>
                     </div>
 
                     <div class="flex flex-col m-4 w-full justify-center items-center justify-self-center">

@@ -100,7 +100,7 @@ export function FormularioV() {
                     <button onClick={() => navigate('/Inicio')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
 
                 </div>
-                <div class="flex flex-col w-[90%] justify-center items-center shadow-lg rounded-2xl">
+                <div class="flex flex-col w-[90%] justify-center items-center shadow-lg rounded-2xl mb-20">
                     <div class="pt-8 pb-8 bg-royal w-full rounded-t-2xl text-center">
                         <h1 class="text-4xl font-bold text-white">Formulario de Ventas</h1>
                     </div>

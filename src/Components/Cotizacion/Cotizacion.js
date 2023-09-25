@@ -64,10 +64,14 @@ export function Cotizacion(props) {
                     }
                 })
                 const jsonData = await response.json();
-                setCotizacion(jsonData); // Actualiza el estado con los datos de la API
-            } catch (error) {
-                console.error('Error al obtener datos:', error);
-            }
+                const sortedCotizacion = jsonData.sort((a, b) => {
+                    return new Date(b.fecha_pedido) - new Date(a.fecha_pedido);
+                });
+    
+                setCotizacion(sortedCotizacion); // Actualiza el estado con los datos ordenados
+                } catch (error) {
+                    console.error('Error al obtener datos:', error);
+                }
         };
 
         fetchCotizacion(); // Llama a la función para obtener los datos cuando el componente se monta

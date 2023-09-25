@@ -29,6 +29,7 @@ export function Home(props) {
         }));
     };
     const toggleDiv1 = (IdPedido) => {
+        scrollToTop();
         setShowDivMap1(prevState => ({
             ...prevState,
             [IdPedido]: !prevState[IdPedido] || false
@@ -69,7 +70,12 @@ export function Home(props) {
                     }
                 })
                 const jsonData = await response.json();
-                setPedido(jsonData); // Actualiza el estado con los datos de la API
+                // Ordenar los pedidos por fecha en orden descendente (de más nuevo a más antiguo)
+                const sortedPedido = jsonData.sort((a, b) => {
+                    return new Date(b.fecha_pedido) - new Date(a.fecha_pedido);
+                });
+
+                setPedido(sortedPedido); // Actualiza el estado con los datos ordenados
             } catch (error) {
                 console.error('Error al obtener datos:', error);
             }
@@ -96,6 +102,19 @@ export function Home(props) {
 
         // Formatear la fecha en el formato deseado (YYYY-MM-DD)
         const fechaFormateada = `${año}-${mes}-${día}`;
+
+        const fechaAc = item.fecha_edicion
+        ? (() => {
+            const fechaActualizada = item.fecha_edicion;
+            const dateActualizada = new Date(fechaActualizada);
+            const añoAc = dateActualizada.getFullYear();
+            const mesAc = String(dateActualizada.getMonth() + 1).padStart(2, "0");
+            const díaAc = String(dateActualizada.getDate()).padStart(2, "0");
+            return `${añoAc}-${mesAc}-${díaAc}`;
+          })()
+        : null;
+
+
         const estado = item.estado;
 
         const backgroundColor =
@@ -106,7 +125,8 @@ export function Home(props) {
                     : estado === 'Sin inventario'
                         ? '#BD6849' // Estilo para estado "sin inventario"
                         : ''; // Valor por defecto si el estado no coincide con ninguno de los casos anteriores
-
+        console.log("fecha fecha*************")
+        console.log(item.fecha_edicion)
 
         return (
             <>
@@ -122,6 +142,7 @@ export function Home(props) {
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.estado}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.urgencia}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaFormateada}</td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaAc}</td>
 
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">
                         <div class="flex flex-col">
@@ -153,9 +174,9 @@ export function Home(props) {
             <div class="h-full">
                 <Sidebar class="w-3/12 h-full" />
             </div>
-            <section class="flex flex-col w-9/12 ml-14 ">
+            <section class="flex flex-col w-10/12 ml-14 ">
                 <div class="m-5 p-5 ">
-           <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/Ventas')}>{buttonContent}</button>
+                    <button class="bg-grotto p-5 rounded-full font-bold border-none shadow-md text-royal drop-shadow-2xl" onClick={() => navigate('/Ventas')}>{buttonContent}</button>
                 </div>
                 {Object.keys(showDivMap).map(itemId => (
                     showDivMap[itemId] && (
@@ -189,10 +210,11 @@ export function Home(props) {
                                 <th class="p-2 py-4 border border-mid tracking-wider">Estado</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Urgencia</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Fecha</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider">Actualizacion</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody> 
+                        <tbody>
                             {tableRows}
                         </tbody>
 

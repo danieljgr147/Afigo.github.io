@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
-    const id_pedido=IdPedido;
+    const id_pedido = IdPedido;
     const [detalle, setDetalle] = useState([]);
     const [editedItem, setEditedItem] = useState(item);
 
@@ -54,8 +54,8 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
         // Función para hacer la solicitud GET a la API
         const fetchDetalle = async () => {
             try {
-                
-            
+
+
                 const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/All", {
                     method: 'POST',
                     body: id_pedido,
@@ -79,21 +79,65 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
         const IdDetalle = item.id_detalle;
         console.log("id detalle")
         console.log(IdDetalle)
+
+        const handleDeleteClick = () => {
+            eliminarDetalle(IdDetalle);
+        };
+
         return (
             <>
                 <tr key={item.id_detalle} class="even:bg-grotto odd:bg-baby">
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_producto}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.cant_producto}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.descripcion}</td>
-
-                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center"><button onClick={() => toggleDiv(IdDetalle)} class="font-bold hover:text-grotto ">Editar</button></td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.estado}</td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">
+                        <div class="flex flex-col">
+                        <button onClick={() => toggleDiv(IdDetalle)} class="font-bold hover:text-grotto ">Editar</button>
+                        <button onClick={handleDeleteClick} class="font-bold hover:text-grotto">
+                            Eliminar
+                        </button>
+                        </div>
+                    </td>
                 </tr>
                 <div>
-                {showDivMap[IdDetalle] && <EditarD IdDetalle={IdDetalle} id_pedido={id_pedido} item={item}></EditarD>}
+                    {showDivMap[IdDetalle] && <EditarD IdDetalle={IdDetalle} id_pedido={id_pedido} item={item}></EditarD>}
                 </div>
             </>
         );
     });
+
+    const eliminarDetalle = async (idDetalle) => {
+        console.log(idDetalle)
+        console.log("*********")
+        try {
+            const params = {
+                id_detalle: idDetalle
+            };
+            console.log("parametros")
+            console.log(params)
+            const apiUrl = "https://AfigoControl.somee.com/API/api/detalle/delete";
+            const response = await fetch(apiUrl, {
+                method: 'DELETE',
+                body: JSON.stringify(params),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: sessionStorage.getItem('Token'),
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al eliminar el detalle de pedido');
+            } else {
+                console.log("eliminado correctamente");
+            }
+
+        } catch (error) {
+            console.error('Error al eliminar el detalle:', error);
+        }
+    };
+
+
 
     return (
 
@@ -104,7 +148,7 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
                     <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl" onClick={() => toggleDiv1(id_pedido)}>Agregar mas</button>
                     <div>
                         {showDiv[id_pedido] && <AgregarD id_pedido={id_pedido}></AgregarD>}
-                        
+
                     </div>
                 </div>
                 {showDiv1 && <div class="rounded-2xl overflow-x-auto overflow-y-auto ">
@@ -114,6 +158,7 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Producto</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Cantidad</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Descripcion</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Estado</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Acciones</th>
                             </tr>
                         </thead>

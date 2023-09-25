@@ -31,7 +31,8 @@ export function FormularioD({ idPedido }) {
                 id_pedido: IdPedido,
                 nombre_producto: detalle.nombre_producto,
                 cant_producto: parseInt(detalle.cant_producto),
-                descripcion: detalle.descripcion
+                descripcion: detalle.descripcion,
+                estado: "En stock"
             }
 
             const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/create", {
