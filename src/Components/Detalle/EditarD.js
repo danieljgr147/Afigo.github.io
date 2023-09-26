@@ -126,7 +126,7 @@ export function EditarD({ item, id_pedido, IdDetalle }) {
                             value={editedItem.estado === null ? "" : editedItem.estado}
                             onChange={onChange}>
                             <option value={" "}></option>
-                            <option value={"En inventario"}>En inventario</option>
+                            <option value={"Listo"}>Listo</option>
                             <option value={"Sin inventario"}>Sin inventario</option>
                         </select>
                     </div>
