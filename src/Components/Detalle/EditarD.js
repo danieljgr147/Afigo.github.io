@@ -128,6 +128,7 @@ export function EditarD({ item, id_pedido, IdDetalle }) {
                             <option value={" "}></option>
                             <option value={"Listo"}>Listo</option>
                             <option value={"Sin inventario"}>Sin inventario</option>
+                            <option value={"Producto agotado"}>Producto agotado</option>
                         </select>
                     </div>
 
