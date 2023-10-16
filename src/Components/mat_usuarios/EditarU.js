@@ -24,6 +24,7 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
             usuario_admin: parseInt(e.target.usuario_admin.value),
             nombre_de_usuario: e.target.nombre_de_usuario.value,
             contrasenia: e.target.contrasenia.value,
+            sucursal: e.target.sucursal.value
         };
 
         await Update(params)
@@ -39,8 +40,8 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
 
     useEffect(() => {
         if (editedItem) {
-            const { user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia  } = editedItem;
-            setEditedItem({ user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia  });
+            const { user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia, sucursal } = editedItem;
+            setEditedItem({ user_id, nombre, direccion, usuario_admin, nombre_de_usuario, contrasenia, sucursal });
         }
     }, [editedItem]);
 
@@ -110,7 +111,22 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
                             onChange={onChange}
                             value={editedItem.contrasenia === null ? "" : editedItem.contrasenia}
                         />
-                        <button type='submit' class="bg-navy text-white font-semibold mt-4 p-1 w-2/5 rounded-xl">Agregar</button>
+                    </div>
+
+                    <div class="flex flex-col items-center  m-1">
+                        <label class="font-semibold text-xl" for="sucursal">Sucursal</label>
+                        <select class="border border-navy w-8/12 text-[1.05rem] p-1 rounded-md shadow-xl"
+                            name="sucursal"
+                            id="sucursal"
+                            onChange={onChange}
+                            value={editedItem.sucursal === null ? "" : editedItem.sucursal}
+                        >
+                            <option class="border border-navy w-1/2" value=" ">  </option>
+                            <option class="border border-navy w-1/2" value="Palmares">Palmares</option>
+                            <option class="border border-navy w-1/2" value="Sarchí">Sarchí</option>
+                            <option class="border border-navy w-1/2" value="Nicoya">Nicoya</option>
+                            </select>
+                            <button type='submit' class="bg-navy text-white font-semibold mt-4 p-1 w-2/5 rounded-xl">Agregar</button>
                     </div>
 
                 </form>

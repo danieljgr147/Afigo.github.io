@@ -10,6 +10,9 @@ import { useMediaQuery } from 'react-responsive';
 
 
 export function Home(props) {
+    const sucursal = sessionStorage.getItem('usuario_sucursal')
+    console.log("la sucursal****")
+    console.log(sucursal)
     const navigate = useNavigate()
 
     const [showDivMap, setShowDivMap] = useState({});
@@ -62,8 +65,9 @@ export function Home(props) {
         const fetchPedido = async () => {
             try {
                 const param = "Pedido";
-                const response = await fetch(urlCompleta, {
-                    method: 'GET',
+                const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/ByTypePedido", {
+                    method: 'POST',
+                    body: JSON.stringify(sucursal),
                     headers: {
                         'Content-Type': "application/json; charset=utf-8",
                         "Authorization": sessionStorage.getItem('Token')
@@ -130,7 +134,7 @@ export function Home(props) {
 
         return (
             <>
-                <tr key={pedidoId} class="even:bg-grotto odd:bg-baby">
+                <tr key={item.id_pedido} class="even:bg-grotto odd:bg-baby">
 
                     <td style={{ backgroundColor }}>   </td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre}</td>

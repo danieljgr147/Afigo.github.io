@@ -54,8 +54,6 @@ export function DetalleP({ buttonLabel, item, updateState, IdPedido }) {
         // Función para hacer la solicitud GET a la API
         const fetchDetalle = async () => {
             try {
-
-
                 const response = await fetch("https://AfigoControl.somee.com/API/api/detalle/All", {
                     method: 'POST',
                     body: id_pedido,

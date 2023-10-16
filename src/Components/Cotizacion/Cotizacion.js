@@ -9,6 +9,7 @@ import { FaPlus } from "react-icons/fa6";
 import { useMediaQuery } from 'react-responsive';
 
 export function Cotizacion(props) {
+    const sucursal = sessionStorage.getItem('usuario_sucursal')
     const [cotizacion, setCotizacion] = useState([]);
     const navigate = useNavigate()
     const [showDivMap, setShowDivMap] = useState({});
@@ -56,8 +57,9 @@ export function Cotizacion(props) {
         const fetchCotizacion = async () => {
             try {
                 const param = "Cotizacion";
-                const response = await fetch(urlCompleta, {
-                    method: 'GET',
+                const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/ByTypeCotizacion", {
+                    method: 'POST',
+                    body: JSON.stringify(sucursal),
                     headers: {
                         'Content-Type': "application/json; charset=utf-8",
                         "Authorization": sessionStorage.getItem('Token')

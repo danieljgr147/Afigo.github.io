@@ -32,6 +32,7 @@ function Tabla_usuarios(props) {
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre} </td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.direccion} </td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_de_usuario} </td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.sucursal} </td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center"> 
                         <div >
                             <button class="bg-royal text-white font-semibold p-1 rounded-xl pl-2 pr-2" onClick={() => toggleDiv(itemId)}>Editar</button>
@@ -66,6 +67,7 @@ function Tabla_usuarios(props) {
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Nombre</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Direccion</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Usuario</th>
+                                <th class="p-2 py-4 border border-mid tracking-wider text-center">Sucursal</th>
                                 <th class="p-2 py-4 border border-mid tracking-wider text-center">Acciones</th>
                             </tr>
                         </thead>
