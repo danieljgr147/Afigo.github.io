@@ -11,8 +11,9 @@ import { useMediaQuery } from 'react-responsive';
 
 export function Home(props) {
     const sucursal = sessionStorage.getItem('usuario_sucursal')
-    console.log("la sucursal****")
-    console.log(sucursal)
+    const userType = sessionStorage.getItem('usuario_admin')
+    console.log("usertype****")
+    console.log(userType)
     const navigate = useNavigate()
 
     const [showDivMap, setShowDivMap] = useState({});
@@ -59,6 +60,10 @@ export function Home(props) {
     const urlCompleta = `${apiUrl}?tipo_pedido=${tipoPedido}`;
 
     const [pedido, setPedido] = useState([]);
+    const data = {
+        sucursal: sucursal,
+        tipo_usuario: userType,
+      };
 
     useEffect(() => {
         // Función para hacer la solicitud GET a la API
@@ -67,7 +72,7 @@ export function Home(props) {
                 const param = "Pedido";
                 const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/ByTypePedido", {
                     method: 'POST',
-                    body: JSON.stringify(sucursal),
+                    body: JSON.stringify(data),
                     headers: {
                         'Content-Type': "application/json; charset=utf-8",
                         "Authorization": sessionStorage.getItem('Token')
