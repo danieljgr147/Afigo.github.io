@@ -62,7 +62,7 @@ export function Home(props) {
     const [pedido, setPedido] = useState([]);
     const data = {
         sucursal: sucursal,
-        tipo_usuario: userType,
+        usuario_admin: parseInt(userType)
       };
 
     useEffect(() => {

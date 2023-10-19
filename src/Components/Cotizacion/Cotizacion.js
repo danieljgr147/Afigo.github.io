@@ -54,7 +54,7 @@ export function Cotizacion(props) {
     const urlCompleta = `${apiUrl}?tipo_pedido=${tipoPedido}`;
     const data = {
         sucursal: sucursal,
-        tipo_usuario: userType,
+        usuario_admin: parseInt(userType)
       };
     useEffect(() => {
         // Función para hacer la solicitud GET a la API
