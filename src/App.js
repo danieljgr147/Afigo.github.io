@@ -8,6 +8,7 @@ import { FormularioC } from "./Components/Cotizacion/FormularioC";
 import { Usuarios } from "./Components/mat_usuarios/Usuarios";
 import { FormularioU } from "./Components/mat_usuarios/FormularioU";
 import { DetalleP } from "./Components/Detalle/DetalleP";
+import { Perfil } from "./Components/Perfil";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/NuevoUsuario" element={<FormularioU/>}></Route>
         <Route path="/det" element={<DetalleP/>}></Route>
         <Route path="/NuevaCotizacion" element={<FormularioC></FormularioC>}></Route>
+        <Route path="/Perfil" element={<Perfil></Perfil>}></Route>
       </Routes>    
     </>
   );

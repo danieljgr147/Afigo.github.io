@@ -14,6 +14,7 @@ module.exports = {
       asparagus:'#61934D',
       saffron:'#E9BF54',
       brown:'#BD6849',
+      darkb:'#05325C'
     },
     extend: {},
   },
