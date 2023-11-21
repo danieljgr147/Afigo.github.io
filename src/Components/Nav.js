@@ -11,7 +11,6 @@ export function Nav(){
 			<div className="w-50 grid">
 				<ul className="flex flex-row justify-end">
 					<li> <a href="#" class=""><FaRegUserCircle class="w-10 h-10 pr-2 mr-4"/></a></li>
-					<li><a href="#" class=""><FiSettings class="w-10 h-10 pl-2 ml-4"/></a></li>
 				</ul>
 			</div>
 		</header>
