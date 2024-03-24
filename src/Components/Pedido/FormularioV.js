@@ -40,7 +40,8 @@ export function FormularioV() {
         direccion_envio: "",
         urgencia: "",
         tipo_pedido: "",
-        sucursal: ""
+        sucursal: "",
+        codigo:"",
     }]);
 
     const enviarDatosPedido = async () => {
@@ -55,7 +56,8 @@ export function FormularioV() {
                 direccion_envio: pedido.direccion_envio,
                 urgencia: pedido.urgencia,
                 tipo_pedido: "Pedido",
-                sucursal: pedido.sucursal
+                sucursal: pedido.sucursal,
+                codigo:"NA",
             };
             const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
                 method: 'POST',

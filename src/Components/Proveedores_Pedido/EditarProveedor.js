@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 
-export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
+export function EditarProveedor({ buttonLabel, item, updateState, pedidoId }) {
     const ID = pedidoId;
     const IDusuario = sessionStorage.getItem('id_usuario')
     const [editedItem, setEditedItem] = useState(item);
@@ -30,8 +30,7 @@ export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
                 metodo_envio: "",
                 direccion_envio: "",
                 urgencia: "",
-                tipo_pedido: "Cotizacion",
-                codigo:"NA",
+                tipo_pedido: "Proveedor"
             };
             console.log(params);
 
@@ -48,7 +47,7 @@ export function EditarC({ buttonLabel, item, updateState, pedidoId }) {
                 const data = await response.json();
                 // Hacer algo con la respuesta de la API si es necesario
                 console.log(data);
-                toast.success('Cotizacion actualizada con éxito', {
+                toast.success('Pedido a proveedor actualizado con éxito', {
                     position: 'top-right',
                     autoClose: 3000, // Duración en milisegundos
                     hideProgressBar: false,

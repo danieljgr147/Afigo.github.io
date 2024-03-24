@@ -10,7 +10,8 @@ import { FormularioU } from "./Components/mat_usuarios/FormularioU";
 import { DetalleP } from "./Components/Detalle/DetalleP";
 import { Perfil } from "./Components/Perfil";
 import { Prueba } from "./Components/Pedido/Prueba";
-
+import { Proveedor } from "./Components/Proveedores_Pedido/Proveedor";
+import { FormularioProveedor } from "./Components/Proveedores_Pedido/FormularioProovedor";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/NuevaCotizacion" element={<FormularioC></FormularioC>}></Route>
         <Route path="/Perfil" element={<Perfil></Perfil>}></Route>
         <Route path="/Prueba" element={<Prueba></Prueba>}></Route>
+        <Route path="/Proveedores" element={<Proveedor></Proveedor>}></Route>
+        <Route path="/FormularioProveedores" element={<FormularioProveedor></FormularioProveedor>}> </Route>
       </Routes>    
     </>
   );

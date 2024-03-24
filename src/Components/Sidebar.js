@@ -6,13 +6,14 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineForm } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiMenuAlt3 } from "react-icons/hi";
-
+import { BsCartPlus } from "react-icons/bs";
 
 export function Sidebar(){
   const userType = sessionStorage.getItem('usuario_admin')
   const menus = [
     { name: "Pedidos", link: "/Inicio", icon: AiOutlineShoppingCart },
     { name: "Cotizaciones", link: "/Cotizacion", icon: AiOutlineForm },
+    { name: "Proveedores", link: "/Proveedores", icon: BsCartPlus },
     { name: "Usuarios", link: "/Usuarios", icon: AiOutlineUser },
   ];
   const [open, setOpen] = useState(false);

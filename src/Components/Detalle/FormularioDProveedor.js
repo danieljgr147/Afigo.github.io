@@ -14,8 +14,8 @@ export function FormularioD({ idPedido }) {
         id_pedido: 1,
         nombre_producto: "",
         cant_producto: 1,
-        codigo:"",
-        descripcion: ""
+        descripcion: "",
+        codigo:""
     };
     const [detalle, setDetalle] = useState(initialState);
 
@@ -33,7 +33,7 @@ export function FormularioD({ idPedido }) {
                 nombre_producto: detalle.nombre_producto,
                 cant_producto: parseInt(detalle.cant_producto),
                 descripcion: detalle.descripcion,
-                codigo:"NA",
+                codigo:detalle.codigo,
                 estado: "En inventario"
             }
 
@@ -101,6 +101,7 @@ export function FormularioD({ idPedido }) {
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_producto}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.cant_producto}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.descripcion}</td>
+                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.codigo}</td>
                 </tr>
                 <div>
                 </div>
@@ -153,6 +154,16 @@ export function FormularioD({ idPedido }) {
                         onChange={(e) => setDetalle({ ...detalle, descripcion: e.target.value })}
                     ></input>
                 </div>
+                <div class="flex flex-col m-4 w-full justify-center items-center">
+                    <label class="font-semibold">Codigo</label>
+                    <input class="border border-navy w-[90%] p-1"
+                        type="text"
+                        name="codigo"
+                        id="codigo"
+                        value={detalle.codigo}
+                        onChange={(e) => setDetalle({ ...detalle, codigo: e.target.value })}
+                    ></input>
+                </div>
                 <button onClick={enviarDatosDetalle} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Agregar</button>
             </form>
             <div class="w-full flex justify-center">
@@ -162,6 +173,7 @@ export function FormularioD({ idPedido }) {
                             <th class="p-2 py-4 border border-mid tracking-wider text-center">Producto</th>
                             <th class="p-2 py-4 border border-mid tracking-wider text-center">Cantidad</th>
                             <th class="p-2 py-4 border border-mid tracking-wider text-center">Descripcion</th>
+                            <th class="p-2 py-4 border border-mid tracking-wider text-center">Codigo</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
-export function FormularioC() {
+export function FormularioProveedor() {
     const navigate = useNavigate()
     const ID = sessionStorage.getItem('id_usuario')
     const [pedidoId, setPedidoId] = useState(null);
@@ -48,8 +48,7 @@ export function FormularioC() {
                 metodo_envio: "",
                 direccion_envio: "",
                 urgencia: "",
-                tipo_pedido: "Cotizacion",
-                codigo:"NA",
+                tipo_pedido: "Proveedor"
             };
             const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
                 method: 'POST',
@@ -69,7 +68,7 @@ export function FormularioC() {
                 console.log("ID ID ID:", pedidoId)
                 toggleDiv();
                 toggleDiv1()
-                toast.success('Cotizacion creada con éxito', {
+                toast.success('Pedido a proveedor creado con éxito', {
                     position: 'top-right',
                     autoClose: 3000, // Duración en milisegundos
                     hideProgressBar: false,
@@ -89,16 +88,16 @@ export function FormularioC() {
             <section class="flex flex-col w-full justify-center items-center">
                 <ToastContainer />
                 <div class="self-start ml-20 mt-10">
-                    <button onClick={() => navigate('/Cotizacion')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
+                    <button onClick={() => navigate('/Proveedores')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
                 </div>
                 <div class="flex flex-col w-[90%] justify-center items-center shadow-lg rounded-2xl">
                     <div  class="pt-8 pb-8 bg-royal w-full rounded-t-2xl text-center">
-                        <h1 class="text-4xl font-bold text-white">Formulario de cotizaciones</h1>
+                        <h1 class="text-4xl font-bold text-white">Formulario de pedidos a proveedores</h1>
                     </div>
                     <div class="flex flex-col w-1/2 justify-center items-center pt-4 w-full">
 
                         <div class="flex flex-col m-4 w-[90%] justify-center items-center">
-                            <label class="font-semibold">Nombre del cliente</label>
+                            <label class="font-semibold">Nombre del Proveedor</label>
                             <input class="border border-navy w-[100%] p-1"
                                 value={pedido.nombre_cliente}
                                 onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
@@ -106,7 +105,7 @@ export function FormularioC() {
 
 
                         <div class="flex flex-col m-4 w-[90%] justify-center items-center">
-                            <label class="font-semibold">Informacion del cliente</label>
+                            <label class="font-semibold">Sucursal</label>
                             <input class="border border-navy w-[100%] p-1"
                                 value={pedido.detalle_factura}
                                 onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
@@ -119,7 +118,7 @@ export function FormularioC() {
                     {showDiv && <FormularioD idPedido={pedidoId} />}
 
                     <div class="flex flex-col items-center justify-center mt-2 mb-4">
-                <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Cotizacion')}>Listo</button>
+                <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Proveedores')}>Listo</button>
             </div>
                 </div>
 

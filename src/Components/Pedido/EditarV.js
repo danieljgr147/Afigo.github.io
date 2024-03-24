@@ -31,7 +31,8 @@ export function EditarV({ buttonLabel, item, updateState, pedidoId }) {
                 metodo_envio: e.target.metodo_envio.value,
                 direccion_envio: e.target.direccion_envio.value,
                 urgencia: e.target.urgencia.value,
-                tipo_pedido: "Pedido"
+                tipo_pedido: "Pedido",
+                codigo:"NA",
             };
             console.log(params);
 
