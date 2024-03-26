@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
-export function FormularioD({ idPedido }) {
+export function FormularioDProveedor({ idPedido }) {
 
     const IdPedido = idPedido;
     console.log("id en formulario")
@@ -99,7 +99,6 @@ export function FormularioD({ idPedido }) {
             <>
                 <tr key={item.id_detalle} class="even:bg-grotto odd:bg-baby">
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre_producto}</td>
-                    <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.cant_producto}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.descripcion}</td>
                     <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.codigo}</td>
                 </tr>
@@ -135,15 +134,7 @@ export function FormularioD({ idPedido }) {
                         onChange={(e) => setDetalle({ ...detalle, nombre_producto: e.target.value })}
                     ></input>
                 </div>
-                <div class="flex flex-col m-4 w-full justify-center items-center">
-                    <label class="font-semibold">Cantidad</label>
-                    <input class="border border-navy w-[90%] p-1"
-                        name="cant_producto"
-                        id="cant_producto"
-                        value={detalle.cant_producto}
-                        onChange={(e) => setDetalle({ ...detalle, cant_producto: e.target.value })}
-                    ></input>
-                </div>
+               
                 <div class="flex flex-col m-4 w-full justify-center items-center">
                     <label class="font-semibold">Descripcion</label>
                     <input class="border border-navy w-[90%] p-1"
@@ -171,7 +162,6 @@ export function FormularioD({ idPedido }) {
                     <thead>
                         <tr class="border-none bg-royal text-white">
                             <th class="p-2 py-4 border border-mid tracking-wider text-center">Producto</th>
-                            <th class="p-2 py-4 border border-mid tracking-wider text-center">Cantidad</th>
                             <th class="p-2 py-4 border border-mid tracking-wider text-center">Descripcion</th>
                             <th class="p-2 py-4 border border-mid tracking-wider text-center">Codigo</th>
                         </tr>

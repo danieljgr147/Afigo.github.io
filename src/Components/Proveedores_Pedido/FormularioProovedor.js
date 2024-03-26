@@ -2,7 +2,7 @@ import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
-import { FormularioD } from "../Detalle/FormularioD";
+import { FormularioDProveedor} from '../Detalle/FormularioDProveedor';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
@@ -115,7 +115,7 @@ export function FormularioProveedor() {
 
 
                     </div>
-                    {showDiv && <FormularioD idPedido={pedidoId} />}
+                    {showDiv && <FormularioDProveedor idPedido={pedidoId}></FormularioDProveedor>}
 
                     <div class="flex flex-col items-center justify-center mt-2 mb-4">
                 <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Proveedores')}>Listo</button>
