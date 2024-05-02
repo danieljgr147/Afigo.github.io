@@ -42,7 +42,7 @@ export function FormularioProveedor() {
             const params = {
                 estado: "Pendiente",
                 id_usuario: parseInt(ID),
-                nombre_cliente: pedido.nombre_cliente,
+                nombre_cliente: "Proveedor",
                 factura_electronica: 0,
                 detalle_factura: pedido.detalle_factura,
                 metodo_envio: "",
@@ -95,13 +95,6 @@ export function FormularioProveedor() {
                         <h1 class="text-4xl font-bold text-white">Formulario de pedidos a proveedores</h1>
                     </div>
                     <div class="flex flex-col w-1/2 justify-center items-center pt-4 w-full">
-
-                        <div class="flex flex-col m-4 w-[90%] justify-center items-center">
-                            <label class="font-semibold">Nombre del Proveedor</label>
-                            <input class="border border-navy w-[100%] p-1"
-                                value={pedido.nombre_cliente}
-                                onChange={(e) => setPedido({ ...pedido, nombre_cliente: e.target.value })}></input>
-                        </div>
 
 
                         <div class="flex flex-col m-4 w-[90%] justify-center items-center">

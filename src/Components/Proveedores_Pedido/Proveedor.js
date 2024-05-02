@@ -258,7 +258,7 @@ export function Proveedor(props) {
     const buttonContent = isMobile ? (
         <FaPlus size={24} /> // Mostrar solo el icono en dispositivos móviles
     ) : (
-        'Nuevo Pedido' // Mostrar el texto en dispositivos de pantalla grande
+        'Registrar faltante de inventario' // Mostrar el texto en dispositivos de pantalla grande
     );
 
 
