@@ -173,7 +173,7 @@ export function Proveedor(props) {
                                 <td style={{ backgroundColor }}>   </td>
                                 <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{fechaFormateada}</td>
                                 <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.nombre}</td>
-                                <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.detalle_factura}</td>
+                                <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.sucursal}</td>
                                 <td class="p-2 py-4 border-b border-mid tracking-wider text-center">{item.estado}</td>
                                 <td class="p-2 py-4 border-b border-mid tracking-wider text-center">
                                     <div class="flex flex-col">

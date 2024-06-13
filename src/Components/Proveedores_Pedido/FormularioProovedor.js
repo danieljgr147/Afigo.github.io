@@ -102,9 +102,13 @@ export function FormularioProveedor() {
 
                         <div class="flex flex-col m-4 w-[90%] justify-center items-center">
                             <label class="font-semibold">Sucursal</label>
-                            <input class="border border-navy w-[100%] p-1"
-                                value={pedido.detalle_factura}
-                                onChange={(e) => setPedido({ ...pedido, detalle_factura: e.target.value })}></input>
+                            <select class="border border-navy w-[100%] p-1" value={pedido.sucursal}
+                                onChange={(e) => setPedido({ ...pedido, sucursal: e.target.value })}>
+                                <option value=""></option>
+                                <option value="Palmares">Palmares</option>
+                                <option value="Sarchí">Sarchí</option>
+                                <option value="Nicoya">Nicoya</option>
+                            </select>
                         </div>
 
                         {showDiv1 && <button onClick={enviarDatosPedido} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl">Enviar</button>}
