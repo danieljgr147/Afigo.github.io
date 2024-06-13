@@ -2,7 +2,7 @@ import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "reactstrap";
 import { useState, useEffect } from 'react';
-import { FormularioDProveedor} from '../Detalle/FormularioDProveedor';
+import { FormularioDProveedor } from '../Detalle/FormularioDProveedor';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
@@ -32,7 +32,8 @@ export function FormularioProveedor() {
         direccion_envio: "",
         urgencia: "",
         tipo_pedido: "",
-        codigo:"",
+        sucursal: "",
+        codigo: "",
 
     }]);
 
@@ -48,7 +49,9 @@ export function FormularioProveedor() {
                 metodo_envio: "",
                 direccion_envio: "",
                 urgencia: "",
-                tipo_pedido: "Proveedor"
+                tipo_pedido: "Proveedor",
+                sucursal: pedido.sucursal,
+                codigo: "NA"
             };
             const response = await fetch("https://AfigoControl.somee.com/API/api/pedido/create", {
                 method: 'POST',
@@ -91,7 +94,7 @@ export function FormularioProveedor() {
                     <button onClick={() => navigate('/Proveedores')}><IoChevronBackCircleSharp class="w-10 h-10 fill-navy" /></button>
                 </div>
                 <div class="flex flex-col w-[90%] justify-center items-center shadow-lg rounded-2xl">
-                    <div  class="pt-8 pb-8 bg-royal w-full rounded-t-2xl text-center">
+                    <div class="pt-8 pb-8 bg-royal w-full rounded-t-2xl text-center">
                         <h1 class="text-4xl font-bold text-white">Formulario de pedidos a proveedores</h1>
                     </div>
                     <div class="flex flex-col w-1/2 justify-center items-center pt-4 w-full">
@@ -111,14 +114,14 @@ export function FormularioProveedor() {
                     {showDiv && <FormularioDProveedor idPedido={pedidoId}></FormularioDProveedor>}
 
                     <div class="flex flex-col items-center justify-center mt-2 mb-4">
-                <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Proveedores')}>Listo</button>
-            </div>
+                        <button class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-4 rounded-xl" onClick={() => navigate('/Proveedores')}>Listo</button>
+                    </div>
                 </div>
 
             </section>
 
 
-            
+
         </>
     )
 }
