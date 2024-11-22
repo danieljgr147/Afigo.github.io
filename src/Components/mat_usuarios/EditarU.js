@@ -13,9 +13,9 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
             ...editedItem,
             [e.target.name]: e.target.value
         });
-    }; 
+    };
 
-    const submitFormEdit = async (e) => { 
+    const submitFormEdit = async (e) => {
         e.preventDefault();
         const params = {
             user_id: parseInt(e.target.user_id.value),
@@ -34,7 +34,7 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
             position: 'top-right',
             autoClose: 3000, // Duración en milisegundos
             hideProgressBar: false,
-          });
+        });
 
     };
 
@@ -47,10 +47,10 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
 
     return (
         <section class="fixed top-40 left-1 w-full h-full flex flex-col items-center">
-             <ToastContainer />
+            <ToastContainer />
             <div class="min-w-[35%] bg-white p-1  flex flex-col shadow-[4px_10px_60px_800px_rgba(0,0,0,0.3)] rounded-xl" >
                 <form onSubmit={submitFormEdit} class="grid">
-                <input class="border border-navy w-1/2 text-[1.05rem] p-1 rounded-md"
+                    <input class="border border-navy w-1/2 text-[1.05rem] p-1 rounded-md"
                         type="text"
                         name="Id user_id"
                         id="user_id"
@@ -125,8 +125,9 @@ export function EditarU({ buttonLabel, item, updateState, contra, itemId }) {
                             <option class="border border-navy w-1/2" value="Palmares">Palmares</option>
                             <option class="border border-navy w-1/2" value="Sarchí">Sarchí</option>
                             <option class="border border-navy w-1/2" value="Nicoya">Nicoya</option>
-                            </select>
-                            <button type='submit' class="bg-navy text-white font-semibold mt-4 p-1 w-2/5 rounded-xl">Agregar</button>
+                            <option class="border border-navy w-1/2" value="Cóbano">Cóbano</option>
+                        </select>
+                        <button type='submit' class="bg-navy text-white font-semibold mt-4 p-1 w-2/5 rounded-xl">Agregar</button>
                     </div>
 
                 </form>
