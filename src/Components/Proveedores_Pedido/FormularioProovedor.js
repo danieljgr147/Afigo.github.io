@@ -108,6 +108,7 @@ export function FormularioProveedor() {
                                 <option value="Palmares">Palmares</option>
                                 <option value="Sarchí">Sarchí</option>
                                 <option value="Nicoya">Nicoya</option>
+                                <option value="Cóbano">Cóbano</option>
                             </select>
                         </div>
 

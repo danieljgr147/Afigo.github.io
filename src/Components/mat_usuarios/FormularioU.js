@@ -116,9 +116,10 @@ export function FormularioU() {
                             <option value="Palmares">Palmares</option>
                             <option value="Sarchí">Sarchí</option>
                             <option value="Nicoya">Nicoya</option>
+                            <option value="Cóbano">Cóbano</option>
                         </select>
 
-                    </div> 
+                    </div>
 
                     <button onClick={enviarDatos} class="bg-navy text-white font-semibold p-3 pl-4 pr-4 mb-8 rounded-xl">Enviar</button>
 
